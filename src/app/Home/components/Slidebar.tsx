@@ -1,4 +1,5 @@
 import { GoHome, GoVideo } from "react-icons/go"
+import { PiBookOpenTextLight } from "react-icons/pi"
 import { FiInbox } from "react-icons/fi"
 import { IoDocumentTextOutline, IoHelpCircleOutline } from "react-icons/io5"
 import { MdDashboard } from "react-icons/md"
@@ -7,7 +8,11 @@ import { CgMoreO } from "react-icons/cg"
 import { FaRegStar, FaChevronDown } from "react-icons/fa"
 import { BsPersonFillAdd } from "react-icons/bs"
 import { useSelector } from "react-redux"
-import { userDataRootState } from "../redux/features/userData"
+import {
+  setExpanded,
+  userDataRootState,
+} from "../../../redux/features/userData"
+import { useDispatch } from "react-redux"
 
 type SlidebarProps = {
   curruntUserData: any
@@ -18,25 +23,44 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
     (state: userDataRootState) => state.userData.expanded
   )
 
+  const dispatch = useDispatch()
+
+  const handleCollapseSlidebar = () => {
+    dispatch(setExpanded(!expanded))
+  }
+
   return (
     <div
       className={` h-[100vh] ${
         expanded ? "w-[220px]" : "w-[60px]"
-      } fixed border-r text-xl flex justify-between items-center py-2 bg-gray-100 flex-col`}>
+      } duration-100 fixed group border-r text-xl flex justify-between items-center pb-2 bg-gray-100 flex-col`}>
       <div className='flex flex-col items-center'>
-        <button
-          className={` h-[48px] ${
-            expanded ? "w-[200px]" : "w-[40px]"
-          } flex cursor-pointer ml-2 pb-2 items-center border-b`}>
-          <p className='flex items-center justify-center  bg-[#b2e0e0] w-6 h-6  rounded-md capitalize font-bold text-[14px] '>
-            {curruntUserData.name.slice(0, 1)}
-          </p>
-          <p
-            className={`${
-              expanded ? "mx-1 capitalize font-semibold text-[15px]" : ""
-            }`}>{`${expanded ? `${curruntUserData.name}...` : ""}`}</p>
-          <FaChevronDown className='text-xs mx-1' />
-        </button>
+        <div
+          className={`${
+            expanded ? "w-[220px]" : "w-[60px] hover:bg-gray-200"
+          }   border-b justify-between h-[55px] flex items-center`}>
+          <button
+            className={` ${
+              expanded ? "hover:bg-gray-200 p-1 rounded-md" : ""
+            } flex cursor-pointer ml-2 items-center`}>
+            <p className='flex items-center justify-center  bg-[#b2e0e0] w-6 h-6  rounded-md capitalize font-bold text-[14px] '>
+              {curruntUserData.name.slice(0, 1)}
+            </p>
+            <p
+              className={`${
+                expanded ? "mx-1 capitalize font-semibold text-[15px]" : ""
+              }`}>{`${expanded ? `${curruntUserData.name}...` : ""}`}</p>
+            <FaChevronDown className='text-xs mx-1' />
+          </button>
+
+          <button
+            onClick={() => {
+              handleCollapseSlidebar()
+            }}
+            className='hover:bg-gray-200 hidden group-hover:flex mr-2 rounded-md'>
+            <PiBookOpenTextLight className=' my-[6px] mx-[6px] cursor-pointer text-xl' />
+          </button>
+        </div>
 
         <div className={` flex flex-col items-center`}>
           <button
@@ -105,7 +129,10 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               {expanded ? "More" : ""}
             </p>
           </button>
-          <div className={` flex flex-col items-center mt-1 pt-3 border-t`}>
+          <div
+            className={` ${
+              expanded ? "w-[220px]" : "w-[60px]"
+            } flex flex-col items-center mt-1 pt-3 border-t`}>
             <button
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
@@ -127,10 +154,13 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
           </div>
         </div>
       </div>
-      <div className={` flex flex-col items-center`}>
+      <div
+        className={`${
+          expanded ? "w-[220px]" : "w-[60px]"
+        }flex flex-col items-center `}>
         <button
           className={`hover:bg-gray-200 flex items-center w-[${
-            expanded ? "200px" : "60px"
+            expanded ? "200px" : "40px"
           }] rounded-md mb-1`}>
           <BsPersonFillAdd className=' my-[6px] mx-2 cursor-pointer text-xl' />
           <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
@@ -139,7 +169,7 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
         </button>
         <button
           className={`hover:bg-gray-200 flex items-center w-[${
-            expanded ? "200px" : "60px"
+            expanded ? "200px" : "40px"
           }] rounded-md mb-1`}>
           <IoHelpCircleOutline className=' my-[6px] mx-2 cursor-pointer text-xl' />
           <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>

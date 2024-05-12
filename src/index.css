@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Set the width and position of the scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+  height: 10px; /* Height of the scrollbar */
+  right: 0; /* Move scrollbar to the right side */
+}
+
+/* Track styles */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+   border-radius: 5px;
+
+}
+
+/* Handle styles */
+::-webkit-scrollbar-thumb {
+  background: #adb3bd; /* Color of the handle */
+   border-radius: 5px;
+
+}
+

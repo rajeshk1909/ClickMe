@@ -10,7 +10,7 @@ const Greeting = ({ curruntUserData }: GreetingProps) => {
   useEffect(() => {
     updateGreeting()
 
-    const intervalId = setInterval(updateGreeting, 60000) // Update every minute
+    const intervalId = setInterval(updateGreeting, 40000) // Update every minute
     return () => clearInterval(intervalId) // Clean up interval on component unmount
   }, [])
 
@@ -19,10 +19,12 @@ const Greeting = ({ curruntUserData }: GreetingProps) => {
 
     if (currentHour >= 5 && currentHour < 12) {
       setGreeting("Good Morning")
-    } else if (currentHour >= 12 && currentHour < 18) {
+    } else if (currentHour >= 12 && currentHour < 16) {
       setGreeting("Good Afternoon")
-    } else {
+    } else if (currentHour >= 16 && currentHour < 20) {
       setGreeting("Good Evening")
+    } else {
+      setGreeting("Good Night")
     }
   }
 
