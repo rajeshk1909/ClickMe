@@ -4,8 +4,8 @@ import { IoReorderFour } from "react-icons/io5"
 import { LuDot } from "react-icons/lu"
 import { ImNewTab } from "react-icons/im"
 import { CiFolderOn } from "react-icons/ci"
-import { BsMicrosoftTeams } from "react-icons/bs"
 import { BiTask } from "react-icons/bi"
+import { FaUserGroup } from "react-icons/fa6"
 
 const Recends = () => {
   return (
@@ -86,7 +86,7 @@ const Recends = () => {
 
           <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
             <div className='flex items-center'>
-              <BsMicrosoftTeams className='text-[#03a2fd]' />
+              <FaUserGroup className='text-[#03a2fd]' />
               <p className='ml-3 mr-1'>Team Space</p>
             </div>
             <div className='group-hover:flex hidden  items-center'>
