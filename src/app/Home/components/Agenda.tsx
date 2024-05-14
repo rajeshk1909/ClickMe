@@ -1,8 +1,8 @@
 import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import { PiGreaterThanLight, PiLessThanLight } from "react-icons/pi"
+import calendarIcon from "../../../assets/calendarIcon.svg"
 import { CiCalendar } from "react-icons/ci"
-import { FaCalendarAlt } from "react-icons/fa"
 
 const Agenda = () => {
   const currentDate = new Date() // Get current date
@@ -53,9 +53,12 @@ const Agenda = () => {
 
         <div className='flex items-center h-[200px] justify-center '>
           <div className='flex items-center flex-col'>
-            <FaCalendarAlt className='text-[40px] ' />
-            <p className='text-xs mt-5'>
-              Agenda items from your calendars will show here. Learn more
+            <img src={calendarIcon} height={80} width={80} alt='Calendar Icon' />
+            <p className='text-xs flex items-center mt-5'>
+              Agenda items from your calendars will show here.
+              <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
+                Learn more
+              </button>
             </p>
             <div className='mt-5'>
               <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] text-xs font-semibold text-white rounded-md py-1 px-5'>

@@ -27,17 +27,15 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
 
   const dispatch = useDispatch()
 
-  const handleCollapseSlidebar = () => {
-    dispatch(setExpanded(!expanded))
-  }
-
   const [open, setOpen] = React.useState<any>(false)
-
-  
 
   const handleClose = () => setOpen(false)
 
   const handleProfileOpen = () => setOpen(true)
+
+  const handleCollapseSlidebar = () => {
+    dispatch(setExpanded(!expanded))
+  }
 
   return (
     <div>
@@ -48,12 +46,19 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
         <div className='flex flex-col items-center'>
           <div
             onClick={() => {
-              handleProfileOpen()
+              {
+                expanded ? "" : handleProfileOpen()
+              }
             }}
             className={`${
               expanded ? "w-[220px]" : "w-[60px] hover:bg-gray-200"
             }   border-b justify-between h-[55px] flex items-center`}>
             <button
+              onClick={() => {
+                {
+                  expanded ? handleProfileOpen() : ""
+                }
+              }}
               className={` ${
                 expanded ? "hover:bg-gray-200 p-1 rounded-md" : ""
               } flex cursor-pointer ml-2 items-center`}>
@@ -75,7 +80,7 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
             </button>
           </div>
 
-          <div className={` flex flex-col items-center`}>
+          <div className='flex flex-col items-center'>
             <button
               className={`bg-[#e5e4fc] flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"

@@ -19,7 +19,7 @@ const Navbar = () => {
   const handleCollapseSlidebar = () => {
     dispatch(setExpanded(!expanded))
   }
-
+  
   useEffect(() => {
     dispatch(setExpanded(false))
   }, [])

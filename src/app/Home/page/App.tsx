@@ -5,6 +5,10 @@ import Navbar from "../components/Navbar"
 import Greeting from "../components/Greeting"
 import Recends from "../components/Recents"
 import Agenda from "../components/Agenda"
+import MyWork from "../components/MyWork"
+import Comments from "../components/Comments"
+import LineUp from "../components/LineUp"
+import AiStandUp from "../components/AiStandUp"
 
 function App() {
   const curruntUserData = useSelector(
@@ -28,6 +32,15 @@ function App() {
           <Recends />
           <Agenda />
         </div>
+        <div
+          className={` ${
+            expanded ? "xl:grid-cols-2 " : "lg:grid-cols-2 "
+          } grid-cols-1 grid  mx-6 gap-6`}>
+          <MyWork />
+          <Comments />
+        </div>
+        <LineUp />
+        <AiStandUp />
       </div>
     </div>
   )
