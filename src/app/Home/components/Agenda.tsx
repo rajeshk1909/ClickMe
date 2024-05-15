@@ -5,14 +5,14 @@ import calendarIcon from "../../../assets/calendarIcon.svg"
 import { CiCalendar } from "react-icons/ci"
 
 const Agenda = () => {
-  const currentDate = new Date() // Get current date
+  const currentDate = new Date() 
   const currentDay = currentDate.getDay()
   const monthName = currentDate.toLocaleDateString("en-US", { month: "long" })
   const dayName = currentDate.toLocaleDateString("en-US", { weekday: "long" })
 
   return (
     <div className='flex justify-center'>
-      <div className='w-[100%] p-5 border-2 rounded-xl '>
+      <div className='w-[100%] p-5 border-2 hover:shadow-[25px] hover:border rounded-xl '>
         <div className='flex w-[100%] justify-between items-center font-semibold '>
           <h1 className='ml-2'>Agenda</h1>
           <div className='flex items-center '>
@@ -53,8 +53,13 @@ const Agenda = () => {
 
         <div className='flex items-center h-[200px] justify-center '>
           <div className='flex items-center flex-col'>
-            <img src={calendarIcon} height={80} width={80} alt='Calendar Icon' />
-            <p className='text-xs flex items-center mt-5'>
+            <img
+              src={calendarIcon}
+              height={80}
+              width={80}
+              alt='Calendar Icon'
+            />
+            <p className='text-xs w-[200px] text-center mt-5'>
               Agenda items from your calendars will show here.
               <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
                 Learn more

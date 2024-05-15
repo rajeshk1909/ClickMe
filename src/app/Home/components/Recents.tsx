@@ -10,7 +10,7 @@ import { FaUserGroup } from "react-icons/fa6"
 const Recends = () => {
   return (
     <div className='flex justify-center'>
-      <div className='w-[100%] pl-5 pt-5 border-2 rounded-xl '>
+      <div className='w-[100%] hover:shadow-[25px] hover:border pl-5 pt-5 border-2 rounded-xl '>
         <div className='flex w-[97%] justify-between items-center font-semibold '>
           <h1 className='ml-2'>Recents</h1>
           <div className='flex items-center '>

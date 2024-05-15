@@ -11,9 +11,9 @@ import { useSelector } from "react-redux"
 import {
   setExpanded,
   userDataRootState,
-} from "../../../redux/features/userData"
+} from "../redux/features/userData"
 import { useDispatch } from "react-redux"
-import ProfileModelOpen from "../../../components/ProfileModelOpen"
+import ProfileModelOpen from "../components/ProfileModelOpen"
 import * as React from "react"
 
 type SlidebarProps = {
@@ -40,7 +40,7 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
   return (
     <div>
       <div
-        className={` h-[100vh] ${
+        className={` h-[95vh] ${
           expanded ? "w-[220px]" : "w-[60px]"
         } duration-100 fixed group border-r text-xl flex justify-between items-center pb-2 bg-gray-100 flex-col`}>
         <div className='flex flex-col items-center'>
@@ -51,7 +51,7 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               }
             }}
             className={`${
-              expanded ? "w-[220px]" : "w-[60px] hover:bg-gray-200"
+              expanded ? "w-[220px]" : "w-[60px] ml-1 hover:bg-gray-200"
             }   border-b justify-between h-[55px] flex items-center`}>
             <button
               onClick={() => {
@@ -60,8 +60,8 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
                 }
               }}
               className={` ${
-                expanded ? "hover:bg-gray-200 p-1 rounded-md" : ""
-              } flex cursor-pointer ml-2 items-center`}>
+                expanded ? "hover:bg-gray-200 p-1  rounded-md" : ""
+              } flex cursor-pointer ml-3 items-center`}>
               <p className='flex items-center justify-center  bg-[#b2e0e0] w-6 h-6  rounded-md capitalize font-bold text-[14px] '>
                 {curruntUserData.name.slice(0, 1)}
               </p>
@@ -75,8 +75,11 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               onClick={() => {
                 handleCollapseSlidebar()
               }}
-              className='hover:bg-gray-200 hidden group-hover:flex mr-2 rounded-md'>
+              className='hover:bg-gray-200 hidden sm:group-hover:flex mr-2 rounded-md'>
               <PiBookOpenTextLight className=' my-[6px] mx-[6px] cursor-pointer text-xl' />
+            </button>
+            <button className='hover:bg-gray-200 sm:hidden flex rounded-md ml-5'>
+              <PiBookOpenTextLight className=' my-[6px] mx-[6px]  cursor-pointer text-xl' />
             </button>
           </div>
 

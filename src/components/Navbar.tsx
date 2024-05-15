@@ -2,10 +2,7 @@ import { GoHome } from "react-icons/go"
 import { IoSettingsOutline } from "react-icons/io5"
 import { PiBookOpenTextLight } from "react-icons/pi"
 import { useDispatch } from "react-redux"
-import {
-  setExpanded,
-  userDataRootState,
-} from "../../../redux/features/userData"
+import { setExpanded, userDataRootState } from "../redux/features/userData"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
 
@@ -19,26 +16,29 @@ const Navbar = () => {
   const handleCollapseSlidebar = () => {
     dispatch(setExpanded(!expanded))
   }
-  
+
   useEffect(() => {
     dispatch(setExpanded(false))
   }, [])
 
   return (
     <div
-      className={` border-b h-14 items-center bg-white top-0 flex justify-between sticky`}>
+      className={` border-b h-14 items-center bg-white top-10 flex justify-between sticky`}>
       <div className='flex items-center  '>
         {!expanded ? (
           <button
             onClick={() => {
               handleCollapseSlidebar()
             }}
-            className='hover:bg-gray-200 rounded-md ml-5'>
+            className='hover:bg-gray-200 hidden sm:flex rounded-md ml-5'>
             <PiBookOpenTextLight className=' my-[6px] mx-[6px]  cursor-pointer text-xl' />
           </button>
         ) : (
           ""
         )}
+        <button className='hover:bg-gray-200 sm:hidden flex rounded-md ml-5'>
+          <PiBookOpenTextLight className=' my-[6px] mx-[6px]  cursor-pointer text-xl' />
+        </button>
         <p className='ml-5 flex items-center'>
           <GoHome className='mr-2' /> Home
         </p>

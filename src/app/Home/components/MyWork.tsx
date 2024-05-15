@@ -6,7 +6,7 @@ import whiteLogo from "../../../assets/clickup_up_white_logo.svg"
 const MyWork = () => {
   return (
     <div className='flex justify-center'>
-      <div className='w-[100%] h-[500px] my-5 pl-5 pt-5 border-2 rounded-xl '>
+      <div className='w-[100%] hover:shadow-[25px] hover:border h-[500px] my-5 sm:pl-5 pt-5 border-2 rounded-xl '>
         <div className='flex w-[97%] justify-between items-center font-semibold '>
           <h1 className='ml-2'>My Work</h1>
           <div className='flex items-center '>
@@ -25,7 +25,7 @@ const MyWork = () => {
         <div className='flex items-center h-[100%] justify-center'>
           <div className='flex items-center flex-col'>
             <img src={whiteLogo} alt='Click Up Logo' height={80} width={80} />
-            <p className='text-xs flex items-center mt-5'>
+            <p className='text-xs w-[200px] text-center mt-5'>
               Tasks and Reminders assigned to you will show here.
               <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
                 Learn more

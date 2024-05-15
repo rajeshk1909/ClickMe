@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import logo from "../../assets/clickup_logo.svg"
 import { useSelector } from "react-redux"
@@ -91,10 +91,10 @@ const SignUp = () => {
 
   return (
     <div className='h-[100vh] bg-[#e5e4eb] '>
-      <div className='flex mx-10 h-24 items-center justify-between'>
+      <div className='flex mx-10 h-24 items-center justify-center sm:justify-between'>
         <img src={logo} height={40} width={125} alt='' />
-        <div className='flex items-center'>
-          <p className='pr-5 font-semibold'>Already have account account?</p>
+        <div className='sm:flex hidden items-center'>
+          <p className='pr-5 font-semibold'>Already have Account?</p>
           <button
             onClick={() => navigate("/LogIn")}
             className=' bg-[#7b68ee] hover:bg-[#5f48ea] font-bold text-white rounded-md py-2 px-5'>
@@ -103,8 +103,8 @@ const SignUp = () => {
         </div>
       </div>
       <div className='flex mt-10 justify-center '>
-        <div className='w-[500px] px-10 py-5  bg-white  rounded-md '>
-          <h1 className='my-5 text-center font-bold text-[28px] '>
+        <div className='w-[500px] sm:mx-0 mx-5 px-10 py-5  bg-white  rounded-md '>
+          <h1 className='my-5 text-center font-bold text-[22px] sm:text-[28px] '>
             Seconds to sign up!
           </h1>
 
@@ -162,6 +162,12 @@ const SignUp = () => {
           </button>
         </div>
       </div>
+      <p className='flex sm:hidden justify-center mt-10 '>
+        Already have a Account?
+        <Link className='mx-1 underline' to='/'>
+          SignUp
+        </Link>
+      </p>
     </div>
   )
 }

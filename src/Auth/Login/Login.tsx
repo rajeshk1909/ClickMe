@@ -9,12 +9,13 @@ import {
 import { useDispatch } from "react-redux"
 
 const Login = () => {
+
   const navigate = useNavigate()
 
   const userData = useSelector(
     (state: userDataRootState) => state.userData.userData
   )
-
+  
   const dispatch = useDispatch()
 
   const [values, setValues] = useState<any>([
@@ -67,9 +68,9 @@ const Login = () => {
   }
   return (
     <div className='h-[100vh] bg-[#e5e4eb] '>
-      <div className='flex mx-10 h-24 items-center justify-between'>
+      <div className='flex mx-10 h-24 items-center justify-center sm:justify-between'>
         <img src={logo} height={40} width={125} alt='' />
-        <div className='flex items-center'>
+        <div className='sm:flex hidden items-center'>
           <p className='pr-5 font-semibold'>Don't have an account?</p>
           <button
             onClick={() => navigate("/SignUp")}
@@ -124,7 +125,7 @@ const Login = () => {
           </form>
         </div>
       </div>
-      <p className='flex justify-center mt-10 '>
+      <p className='flex sm:hidden justify-center mt-10 '>
         Don't have account?{" "}
         <Link className='mx-1 underline' to='/SignUp'>
           SignUp
