@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div>
-      <TopNavbar />
+      <TopNavbar curruntUserData={curruntUserData} />
       <Slidebar curruntUserData={curruntUserData} />
       <div className={`${expanded ? "ml-[220px]" : "ml-[60px]"}`}>
         <Navbar />

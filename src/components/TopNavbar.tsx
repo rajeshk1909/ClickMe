@@ -8,8 +8,14 @@ import { LuAlarmClock } from "react-icons/lu"
 import { IoDocumentTextOutline } from "react-icons/io5"
 import { TbGridDots } from "react-icons/tb"
 import { GiUpgrade } from "react-icons/gi"
+import ProfileEditOpen from "./ProfileEditOpen"
 
-const TopNavbar = () => {
+type TopNavbarTypes = {
+  curruntUserData : any
+}
+
+const TopNavbar = ({curruntUserData } : TopNavbarTypes) => {
+
   return (
     <div className='px-5 bg-[#323452] sticky top-0 flex items-center justify-between j h-10'>
       <div className='flex items-center '>
@@ -57,11 +63,7 @@ const TopNavbar = () => {
           <button className='hover:bg-[#a5a8bd] ml-2 mr-4 rounded-md '>
             <TbGridDots className='my-2 mx-2 ' />
           </button>
-          <button className='hover:bg-[#a5a8bd] flex items-center justify-center rounded-md '>
-            <p className='w-5 h-5 m-1 rounded-[50%] bg-[#7b68ee] flex items-center justify-center'>
-              R
-            </p>
-          </button>
+          <ProfileEditOpen curruntUserData={curruntUserData} />
         </div>
       </div>
     </div>
