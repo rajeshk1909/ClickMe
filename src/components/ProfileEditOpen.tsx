@@ -5,21 +5,26 @@ import { GiJackPlug } from "react-icons/gi"
 import { IoSettingsOutline } from "react-icons/io5"
 import { FaRegBell } from "react-icons/fa6"
 import { MdKeyboardCommandKey, MdDeleteOutline } from "react-icons/md"
-import { FaDownload } from "react-icons/fa6"
+import { FaDownload, FaArrowUpRightFromSquare } from "react-icons/fa6"
 import { CiGift } from "react-icons/ci"
 import { IoMdHelpCircleOutline } from "react-icons/io"
 import { TbLogout2 } from "react-icons/tb"
+import { useNavigate } from "react-router-dom"
 
 type ProfileEditOpenTypes = {
   curruntUserData: any
 }
 
 const ProfileEditOpen = ({ curruntUserData }: ProfileEditOpenTypes) => {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = React.useState<any>(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const name = curruntUserData.name.split(" ")
-  const avatar = name[0].slice(0, 1) + name[1].slice(0, 1)
+  const navigate = useNavigate()
+  const avatar =
+    name.length > 1
+      ? name[0].slice(0, 1) + name[1].slice(0, 1)
+      : name[0].slice(0, 1)
 
   return (
     <div>
@@ -89,18 +94,25 @@ const ProfileEditOpen = ({ curruntUserData }: ProfileEditOpenTypes) => {
               <CiGift className='text-gray-500' />
               <p className='my-[6px] mx-3'>Referrals</p>
             </button>
-            <button className='flex items-center text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
-              <IoMdHelpCircleOutline className='text-gray-500' />
-              <p className='my-[6px] mx-3'>Help</p>
+            <button className='flex items-center justify-between text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
+              <div className='flex items-center'>
+                <IoMdHelpCircleOutline className='text-gray-500' />
+                <p className='my-[6px] mx-3'>Help</p>
+              </div>
+              <FaArrowUpRightFromSquare className='text-gray-500 text-[12px]' />
             </button>
           </div>
 
-          <div className="flex items-center flex-col py-2">
+          <div className='flex items-center flex-col py-2'>
             <button className='flex items-center text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
               <MdDeleteOutline className='text-gray-500' />
               <p className='my-[6px] mx-3'>Trash</p>
             </button>
-            <button className='flex items-center text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
+            <button
+              onClick={() => {
+                navigate("/Login")
+              }}
+              className='flex items-center text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
               <TbLogout2 className='text-gray-500' />
               <p className='my-[6px] mx-3'>Logout</p>
             </button>

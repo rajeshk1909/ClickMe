@@ -1,57 +1,64 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-export interface userDataTypes {
-    id: number,
-    name: string,
-    email: string,
-    password: string,
-    userDataState:any
+export interface UserDataTypes {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
 }
 
-export interface userDataState {
-    userData: userDataTypes[]
-    currentUserData: userDataTypes[]
-    expanded:userDataTypes[]
+export interface UserDataState {
+    userData: UserDataTypes[];
+    currentUserData: UserDataTypes[];
+    expanded: boolean; 
+    toggleSwitch: boolean; 
 }
 
 export interface userDataRootState {
-    userData: userDataState
-    currentUserData: userDataState
-    expanded:userDataState
+    userData: UserDataState;
+    currentUserData: UserDataState;
+    expanded: UserDataState; 
+    toggleSwitch: UserDataState;
 }
 
-const data = localStorage.getItem("userData")
+const userdata = localStorage.getItem("userData");
+const newUserData: UserDataTypes[] = userdata !== null ? JSON.parse(userdata) : [];
 
-const newData: userDataTypes[] = data !== null ? JSON.parse(data) : []
+const currentUserData = localStorage.getItem("currentUserData");
+const newCurrentUserData: UserDataTypes[] = currentUserData !== null ? JSON.parse(currentUserData) : [];
 
-const currentUserData = localStorage.getItem("currentUserData")
+const expandedData = localStorage.getItem("expanded");
+const newExpanded: boolean = expandedData !== null ? JSON.parse(expandedData) : false;
 
-const newCurrentUserData:userDataTypes[] = currentUserData !== null ? JSON.parse(currentUserData) : []
+const switchData = localStorage.getItem("toggleSwitch");
+const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
 
-const expanded : any = localStorage.getItem("expanded")
-
-const initialState :userDataState = {
-    userData: newData,
+const initialState: UserDataState = {
+    userData: newUserData,
     currentUserData: newCurrentUserData,
-    expanded:expanded
-}
+    expanded: newExpanded,
+    toggleSwitch: newSwitchData,
+};
 
-const userData = createSlice({
+const userDataSlice = createSlice({
     name: "userData",
     initialState,
     reducers: {
-        setUserData: (state, action) => {
-            state.userData = action.payload
+        setUserData: (state, action: PayloadAction<UserDataTypes[]>) => {
+            state.userData = action.payload;
         },
-        setCurrentUserData: (state, action) => {
-            state.currentUserData = action.payload
+        setCurrentUserData: (state, action: PayloadAction<UserDataTypes[]>) => {
+            state.currentUserData = action.payload;
         },
-        setExpanded: (state, action) => {
-            state.expanded = action.payload
-        }
-    }
-})
+        setExpanded: (state, action: PayloadAction<boolean>) => { 
+            state.expanded = action.payload;
+        },
+        setToggleSwitchData: (state, action: PayloadAction<boolean>) => { 
+            state.toggleSwitch = action.payload;
+        },
+    },
+});
 
-export const {setUserData , setCurrentUserData ,setExpanded} = userData.actions
+export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData } = userDataSlice.actions;
 
-export default userData.reducer
+export default userDataSlice.reducer;

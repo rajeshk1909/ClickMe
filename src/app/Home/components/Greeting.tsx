@@ -10,8 +10,8 @@ const Greeting = ({ curruntUserData }: GreetingProps) => {
   useEffect(() => {
     updateGreeting()
 
-    const intervalId = setInterval(updateGreeting, 40000) // Update every minute
-    return () => clearInterval(intervalId) // Clean up interval on component unmount
+    const intervalId = setInterval(updateGreeting, 40000)
+    return () => clearInterval(intervalId)
   }, [])
 
   const updateGreeting = () => {

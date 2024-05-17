@@ -1,10 +1,11 @@
 import { GoHome } from "react-icons/go"
-import { IoSettingsOutline } from "react-icons/io5"
 import { PiBookOpenTextLight } from "react-icons/pi"
 import { useDispatch } from "react-redux"
 import { setExpanded, userDataRootState } from "../redux/features/userData"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"
+import SettingOpen from "./SettingOpen"
+import { setToggleSwitchData } from "../redux/features/userData"
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -20,6 +21,8 @@ const Navbar = () => {
   useEffect(() => {
     dispatch(setExpanded(false))
   }, [])
+
+  
 
   return (
     <div
@@ -46,13 +49,10 @@ const Navbar = () => {
       <div className='flex items-center'>
         <div className='border-r hidden sm:flex pr-3'>
           <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] font-bold text-white rounded-md py-1 px-5'>
-            {" "}
             Manage Cards
           </button>
         </div>
-        <button className='hover:bg-gray-200 rounded-md mb-1 mx-5'>
-          <IoSettingsOutline className=' my-[6px] mx-[6px] cursor-pointer text-xl' />
-        </button>
+        <SettingOpen />
       </div>
     </div>
   )

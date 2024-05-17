@@ -52,7 +52,7 @@ const Login = () => {
 
   const handleLogin = () => {
     const currentUser: any = userData.find(
-      (user: any) => user.userId === values.userId
+      (user: any) => user.email === values.email
     )
 
     if (currentUser && currentUser.email === values.email) {

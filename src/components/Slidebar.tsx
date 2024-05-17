@@ -21,13 +21,13 @@ type SlidebarProps = {
 }
 
 const Slidebar = ({ curruntUserData }: SlidebarProps) => {
-  const expanded = useSelector(
+  const expanded:any = useSelector(
     (state: userDataRootState) => state.userData.expanded
   )
 
-  const dispatch = useDispatch()
-
   const [open, setOpen] = React.useState<any>(false)
+
+  const dispatch = useDispatch()
 
   const handleClose = () => setOpen(false)
 
