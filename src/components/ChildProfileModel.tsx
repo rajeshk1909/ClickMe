@@ -12,7 +12,7 @@ type ChildProfileModelTypes = {
 }
 
 const ChildProfileModel = ({ expanded }: ChildProfileModelTypes) => {
-  const [childOpen, setChildOpen] = React.useState<any>(false)
+  const [childOpen, setChildOpen] = React.useState<boolean>(false)
   const handleChildOpen = () => setChildOpen(true)
   const handleChildClose = () => setChildOpen(false)
 

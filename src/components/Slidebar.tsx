@@ -8,21 +8,19 @@ import { CgMoreO } from "react-icons/cg"
 import { FaRegStar, FaChevronDown } from "react-icons/fa"
 import { BsPersonFillAdd } from "react-icons/bs"
 import { useSelector } from "react-redux"
-import {
-  setExpanded,
-  userDataRootState,
-} from "../redux/features/userData"
+import { setExpanded, setNavbar } from "../redux/features/userData"
 import { useDispatch } from "react-redux"
 import ProfileModelOpen from "../components/ProfileModelOpen"
 import * as React from "react"
+import { RootState } from "../redux/store/store"
 
-type SlidebarProps = {
-  curruntUserData: any
-}
+const Slidebar = () => {
+  const expanded: any = useSelector(
+    (state: RootState) => state.userData.expanded
+  )
 
-const Slidebar = ({ curruntUserData }: SlidebarProps) => {
-  const expanded:any = useSelector(
-    (state: userDataRootState) => state.userData.expanded
+  const currentUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
   )
 
   const [open, setOpen] = React.useState<any>(false)
@@ -35,6 +33,10 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
 
   const handleCollapseSlidebar = () => {
     dispatch(setExpanded(!expanded))
+  }
+
+  const handleNavbar = (key: string) => {
+    dispatch(setNavbar(key))
   }
 
   return (
@@ -63,12 +65,12 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
                 expanded ? "hover:bg-gray-200 p-1  rounded-md" : ""
               } flex cursor-pointer ml-3 items-center`}>
               <p className='flex items-center justify-center  bg-[#b2e0e0] w-6 h-6  rounded-md capitalize font-bold text-[14px] '>
-                {curruntUserData.name.slice(0, 1)}
+                {currentUserData?.name?.slice(0, 1)}
               </p>
               <p
                 className={`${
                   expanded ? "mx-1 capitalize font-semibold text-[15px]" : ""
-                }`}>{`${expanded ? `${curruntUserData.name}...` : ""}`}</p>
+                }`}>{`${expanded ? `${currentUserData.name}...` : ""}`}</p>
               <FaChevronDown className='text-xs mx-1' />
             </button>
             <button
@@ -85,6 +87,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
 
           <div className='flex flex-col items-center'>
             <button
+              onClick={() => {
+                handleNavbar("home")
+              }}
               className={`bg-[#e5e4fc] flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               }  rounded-md my-1`}>
@@ -97,6 +102,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               </p>
             </button>
             <button
+              onClick={() => {
+                handleNavbar("inbox")
+              }}
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               } rounded-md mb-1`}>
@@ -106,6 +114,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               </p>
             </button>
             <button
+              onClick={() => {
+                handleNavbar("docs")
+              }}
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               } rounded-md mb-1`}>
@@ -115,6 +126,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               </p>
             </button>
             <button
+              onClick={() => {
+                handleNavbar("dashboards")
+              }}
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               } rounded-md mb-1`}>
@@ -124,6 +138,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               </p>
             </button>
             <button
+              onClick={() => {
+                handleNavbar("clips")
+              }}
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               } rounded-md mb-1`}>
@@ -133,6 +150,9 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
               </p>
             </button>
             <button
+              onClick={() => {
+                handleNavbar("timesheets")
+              }}
               className={`hover:bg-gray-200 flex items-center ${
                 expanded ? "w-[200px]" : "w-[40px]"
               } rounded-md mb-1`}>
@@ -203,7 +223,6 @@ const Slidebar = ({ curruntUserData }: SlidebarProps) => {
       </div>
       <ProfileModelOpen
         expanded={expanded}
-        curruntUserData={curruntUserData}
         handleClose={handleClose}
         open={open}
       />

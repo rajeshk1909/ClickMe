@@ -4,21 +4,25 @@ import { GiUpgrade } from "react-icons/gi"
 import { FaUserGroup } from "react-icons/fa6"
 import { FaPlus } from "react-icons/fa6"
 import ChildProfileModel from "./ChildProfileModel"
-
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store/store"
 
 type ProfileModelOpenPros = {
   handleClose: () => void
-  open: boolean
-  curruntUserData: any
-  expanded: any
+  open: boolean,
+  expanded: boolean
 }
 
 const ProfileModelOpen = ({
   expanded,
   handleClose,
   open,
-  curruntUserData,
 }: ProfileModelOpenPros) => {
+
+  const currentUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
+  )
+
   return (
     <div>
       <Modal
@@ -34,11 +38,11 @@ const ProfileModelOpen = ({
           <div className='flex hover:cursor-pointer items-center w-[200px]'>
             <button className=''>
               <p className='flex items-center justify-center  bg-[#b2e0e0] w-9 h-9 mr-3 rounded-md capitalize font-bold text-[14px] '>
-                {curruntUserData.name.slice(0, 1)}
+                {currentUserData?.name?.slice(0, 1)}
               </p>
             </button>
             <div className=''>
-              <p className='font-semibold'>{`${curruntUserData.name}'s Workspace...`}</p>
+              <p className='font-semibold'>{`${currentUserData.name}'s Workspace...`}</p>
               <p className='text-sm'>Free Forever 1 members</p>
             </div>
           </div>
@@ -50,7 +54,7 @@ const ProfileModelOpen = ({
             <GiUpgrade className='mx-3' />
             <p>Upgrade</p>
           </button>
-          
+
           <ChildProfileModel expanded={expanded} />
           <button className='w-[100%] py-[6px] rounded flex items-center text-sm hover:bg-gray-200'>
             <FaUserGroup className='mx-3' />

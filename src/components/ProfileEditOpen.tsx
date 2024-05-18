@@ -10,21 +10,24 @@ import { CiGift } from "react-icons/ci"
 import { IoMdHelpCircleOutline } from "react-icons/io"
 import { TbLogout2 } from "react-icons/tb"
 import { useNavigate } from "react-router-dom"
+import { useSelector } from "react-redux"
+import { RootState } from "../redux/store/store"
 
-type ProfileEditOpenTypes = {
-  curruntUserData: any
-}
+const ProfileEditOpen = () => {
+  const [open, setOpen] = React.useState<boolean>(false)
+  const curruntUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
+  )
 
-const ProfileEditOpen = ({ curruntUserData }: ProfileEditOpenTypes) => {
-  const [open, setOpen] = React.useState<any>(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
-  const name = curruntUserData.name.split(" ")
+  const name = curruntUserData?.name?.split(" ")
   const navigate = useNavigate()
-  const avatar =
-    name.length > 1
+  const avatar = name
+    ? name.length > 1
       ? name[0].slice(0, 1) + name[1].slice(0, 1)
       : name[0].slice(0, 1)
+    : ""
 
   return (
     <div>

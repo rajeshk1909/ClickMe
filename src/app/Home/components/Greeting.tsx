@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
+import { useSelector } from "react-redux"
+import { RootState } from "../../../redux/store/store"
 
-type GreetingProps = {
-  curruntUserData: any
-}
-
-const Greeting = ({ curruntUserData }: GreetingProps) => {
+const Greeting = () => {
   const [greeting, setGreeting] = useState<string>("")
+
+  const currentUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
+  )
 
   useEffect(() => {
     updateGreeting()
@@ -31,7 +33,7 @@ const Greeting = ({ curruntUserData }: GreetingProps) => {
   return (
     <div>
       <h1 className='font-semibold text-2xl capitalize ml-10 mb-3 mt-5'>
-        {greeting}, {curruntUserData.name}
+        {greeting}, {currentUserData.name}
       </h1>
     </div>
   )

@@ -5,27 +5,24 @@ export interface UserDataTypes {
     name: string;
     email: string;
     password: string;
+    expanded?: boolean,
+    toggleSwitch?: boolean,
+    navbar?:string,
 }
 
 export interface UserDataState {
     userData: UserDataTypes[];
-    currentUserData: UserDataTypes[];
+    currentUserData: UserDataTypes;
     expanded: boolean; 
-    toggleSwitch: boolean; 
-}
-
-export interface userDataRootState {
-    userData: UserDataState;
-    currentUserData: UserDataState;
-    expanded: UserDataState; 
-    toggleSwitch: UserDataState;
+    toggleSwitch: boolean;
+    navbar:string
 }
 
 const userdata = localStorage.getItem("userData");
 const newUserData: UserDataTypes[] = userdata !== null ? JSON.parse(userdata) : [];
 
 const currentUserData = localStorage.getItem("currentUserData");
-const newCurrentUserData: UserDataTypes[] = currentUserData !== null ? JSON.parse(currentUserData) : [];
+const newCurrentUserData: UserDataTypes = currentUserData !== null ? JSON.parse(currentUserData) : [];
 
 const expandedData = localStorage.getItem("expanded");
 const newExpanded: boolean = expandedData !== null ? JSON.parse(expandedData) : false;
@@ -33,11 +30,15 @@ const newExpanded: boolean = expandedData !== null ? JSON.parse(expandedData) : 
 const switchData = localStorage.getItem("toggleSwitch");
 const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
 
+const navbar = localStorage.getItem("navbar");
+const newNavbar : string = navbar !== null ? JSON.parse(navbar) : "home"
+
 const initialState: UserDataState = {
     userData: newUserData,
     currentUserData: newCurrentUserData,
     expanded: newExpanded,
     toggleSwitch: newSwitchData,
+    navbar:newNavbar,
 };
 
 const userDataSlice = createSlice({
@@ -47,7 +48,7 @@ const userDataSlice = createSlice({
         setUserData: (state, action: PayloadAction<UserDataTypes[]>) => {
             state.userData = action.payload;
         },
-        setCurrentUserData: (state, action: PayloadAction<UserDataTypes[]>) => {
+        setCurrentUserData: (state, action: PayloadAction<UserDataTypes>) => {
             state.currentUserData = action.payload;
         },
         setExpanded: (state, action: PayloadAction<boolean>) => { 
@@ -56,9 +57,12 @@ const userDataSlice = createSlice({
         setToggleSwitchData: (state, action: PayloadAction<boolean>) => { 
             state.toggleSwitch = action.payload;
         },
+        setNavbar: (state, action: PayloadAction<string>) => {
+            state.navbar = action.payload
+        }
     },
 });
 
-export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData } = userDataSlice.actions;
+export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData, setNavbar } = userDataSlice.actions;
 
 export default userDataSlice.reducer;

@@ -4,12 +4,10 @@ import { IoSettingsOutline } from "react-icons/io5"
 import { styled } from "@mui/material/styles"
 import Switch, { SwitchProps } from "@mui/material/Switch"
 import { FormControlLabel } from "@mui/material"
-import {
-  setToggleSwitchData,
-  userDataRootState,
-} from "../redux/features/userData"
+import { setToggleSwitchData } from "../../../redux/features/userData"
 import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
+import { RootState } from "../../../redux/store/store"
 
 const IOSSwitch = styled((props: SwitchProps) => (
   <Switch focusVisibleClassName='.Mui-focusVisible' disableRipple {...props} />
@@ -69,7 +67,7 @@ const SettingOpen = () => {
   const dispatch = useDispatch()
 
   const toggleSwitch = useSelector(
-    (state: userDataRootState) => state.userData.toggleSwitch
+    (state: RootState) => state.userData.toggleSwitch
   )
 
   const handleToggleSwitchData = () => {
@@ -82,8 +80,8 @@ const SettingOpen = () => {
         onClick={() => {
           handleOpen()
         }}
-        className='hover:bg-gray-200 rounded-md mb-1 mx-5'>
-        <IoSettingsOutline className=' my-[6px] mx-[6px] cursor-pointer text-xl' />
+        className='hover:bg-gray-200 flex items-center justify-center rounded-md mb-1 mx-5'>
+        <IoSettingsOutline className=' my-2 mx-2 cursor-pointer text-base' />
       </button>
 
       <Modal

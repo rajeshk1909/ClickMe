@@ -1,6 +1,5 @@
 import Slidebar from "../../../components/Slidebar"
 import { useSelector } from "react-redux"
-import { userDataRootState } from "../../../redux/features/userData"
 import Navbar from "../../../components/Navbar"
 import Greeting from "../components/Greeting"
 import Recends from "../components/Recents"
@@ -10,27 +9,37 @@ import Comments from "../components/Comments"
 import LineUp from "../components/LineUp"
 import AiStandUp from "../components/AiStandUp"
 import TopNavbar from "../../../components/TopNavbar"
+import { RootState } from "../../../redux/store/store"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import {
+  setExpanded,
+  setNavbar,
+  setToggleSwitchData,
+} from "../../../redux/features/userData"
 
 function App() {
-  const curruntUserData = useSelector(
-    (state: userDataRootState) => state.userData.currentUserData
-  )
-
-  const expanded = useSelector(
-    (state: userDataRootState) => state.userData.expanded
-  )
+  const expanded = useSelector((state: RootState) => state.userData.expanded)
 
   const toggleSwitch = useSelector(
-    (state: userDataRootState) => state.userData.toggleSwitch
+    (state: RootState) => state.userData.toggleSwitch
   )
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setExpanded(false))
+    dispatch(setToggleSwitchData(true))
+    dispatch(setNavbar("home"))
+  }, [])
 
   return (
     <div>
-      <TopNavbar curruntUserData={curruntUserData} />
-      <Slidebar curruntUserData={curruntUserData} />
+      <TopNavbar />
+      <Slidebar />
       <div className={`${expanded ? "ml-[220px]" : "ml-[60px]"}`}>
         <Navbar />
-        {toggleSwitch ? <Greeting curruntUserData={curruntUserData} /> : ""}
+        {toggleSwitch ? <Greeting /> : ""}
         <div
           className={` ${expanded ? "xl:grid-cols-2 " : "lg:grid-cols-2  "} ${
             toggleSwitch ? "" : "mt-4"
