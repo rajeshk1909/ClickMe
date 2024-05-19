@@ -13,9 +13,80 @@ import { useDispatch } from "react-redux"
 import ProfileModelOpen from "../components/ProfileModelOpen"
 import * as React from "react"
 import { RootState } from "../redux/store/store"
+import SlidebarButton from "./SlidebarButton"
+
+const buttons = [
+  [
+    {
+      id: 1,
+      icon: <GoHome className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Home",
+    },
+    {
+      id: 2,
+      icon: <FiInbox className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Inbox",
+    },
+    {
+      id: 3,
+      icon: (
+        <IoDocumentTextOutline className='my-[6px] mx-2 cursor-pointer text-xl' />
+      ),
+      buttonLabel: "Docs",
+    },
+    {
+      id: 4,
+      icon: <MdDashboard className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Dashboards",
+    },
+    {
+      id: 5,
+      icon: <GoVideo className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Clips",
+    },
+    {
+      id: 6,
+      icon: <RxLapTimer className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Timesheets",
+    },
+    {
+      id: 7,
+      icon: <CgMoreO className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "More",
+    },
+  ],
+  [
+    {
+      id: 8,
+      icon: <FaRegStar className=' my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Favorites",
+    },
+    {
+      id: 9,
+      icon: <RxDashboard className=' my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Spaces",
+    },
+  ],
+  [
+    {
+      id: 10,
+      icon: (
+        <BsPersonFillAdd className=' my-[6px] mx-2 cursor-pointer text-xl' />
+      ),
+      buttonLabel: "Invite",
+    },
+    {
+      id: 11,
+      icon: (
+        <IoHelpCircleOutline className=' my-[6px] mx-2 cursor-pointer text-xl' />
+      ),
+      buttonLabel: "Resource center",
+    },
+  ],
+]
 
 const Slidebar = () => {
-  const expanded: any = useSelector(
+  const expanded: boolean = useSelector(
     (state: RootState) => state.userData.expanded
   )
 
@@ -23,9 +94,8 @@ const Slidebar = () => {
     (state: RootState) => state.userData.currentUserData
   )
 
-  const [activeIndex, setActiveIndex] = React.useState<number>(0)
-
-  const [open, setOpen] = React.useState<any>(false)
+  const [open, setOpen] = React.useState<boolean>(false)
+  const [activeIndex, setActiveIndex] = React.useState<number>(1)
 
   const dispatch = useDispatch()
 
@@ -33,47 +103,14 @@ const Slidebar = () => {
 
   const handleProfileOpen = () => setOpen(true)
 
+  const handleNavbar = (label: string, index: number) => {
+    setActiveIndex(index)
+    dispatch(setNavbar(label))
+  }
+
   const handleCollapseSlidebar = () => {
     dispatch(setExpanded(!expanded))
   }
-
-  const handleNavbar = (key: string, index: number) => {
-    setActiveIndex(index)
-    dispatch(setNavbar(key))
-  }
-
-  const buttons = [
-    {
-      icon: <GoHome className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Home",
-    },
-    {
-      icon: <FiInbox className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Inbox",
-    },
-    {
-      icon: (
-        <IoDocumentTextOutline className='my-[6px] mx-2 cursor-pointer text-xl' />
-      ),
-      buttonLabel: "Docs",
-    },
-    {
-      icon: <MdDashboard className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Dashboards",
-    },
-    {
-      icon: <GoVideo className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Clips",
-    },
-    {
-      icon: <RxLapTimer className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Timesheets",
-    },
-    {
-      icon: <CgMoreO className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "More",
-    },
-  ]
 
   return (
     <div>
@@ -121,53 +158,31 @@ const Slidebar = () => {
             </button>
           </div>
 
-          <div className='flex flex-col items-center'>
-            {buttons.map((button, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  handleNavbar(button.buttonLabel, index)
-                }}
-                className={`hover:bg-gray-200 flex items-center ${
-                  expanded ? "w-[200px]" : "w-[40px]"
-                } ${
-                  activeIndex === index
-                    ? "bg-[#e5e4fc] hover:bg-[#e5e4fc] text-[#7670d5] "
-                    : ""
-                } rounded-md my-1`}>
-                {button.icon}
-                <p
-                  className={`${
-                    expanded ? "font-semibold text-[14px]" : ""
-                  }`}>
-                  {expanded ? button.buttonLabel : ""}
-                </p>
-              </button>
+          <div className='flex flex-col pt-1 items-center'>
+            {buttons[0].map((button) => (
+              <SlidebarButton
+                key={button.id}
+                id={button.id}
+                button={button}
+                expanded={expanded}
+                activeIndex={activeIndex}
+                handleNavbar={handleNavbar}
+              />
             ))}
             <div
               className={` ${
                 expanded ? "w-[220px]" : "w-[60px]"
               } flex flex-col items-center mt-1 pt-3 border-t`}>
-              <button
-                className={`hover:bg-gray-200 flex items-center ${
-                  expanded ? "w-[200px]" : "w-[40px]"
-                } rounded-md mb-1`}>
-                <FaRegStar className=' my-[6px] mx-2 cursor-pointer text-xl' />
-                <p
-                  className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                  {expanded ? "Favorites" : ""}
-                </p>
-              </button>
-              <button
-                className={`hover:bg-gray-200 flex items-center ${
-                  expanded ? "w-[200px]" : "w-[40px]"
-                } rounded-md mb-1`}>
-                <RxDashboard className=' my-[6px] mx-2 cursor-pointer text-xl' />
-                <p
-                  className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                  {expanded ? "Spaces" : ""}
-                </p>
-              </button>
+              {buttons[1].map((button) => (
+                <SlidebarButton
+                  key={button.id}
+                  id={button.id}
+                  button={button}
+                  expanded={expanded}
+                  activeIndex={activeIndex}
+                  handleNavbar={handleNavbar}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -175,24 +190,16 @@ const Slidebar = () => {
           className={`${
             expanded ? "w-[220px]" : "w-[60px]"
           }flex flex-col items-center `}>
-          <button
-            className={`hover:bg-gray-200 flex items-center w-[${
-              expanded ? "200px" : "40px"
-            }] rounded-md mb-1`}>
-            <BsPersonFillAdd className=' my-[6px] mx-2 cursor-pointer text-xl' />
-            <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-              {expanded ? "Invite" : ""}
-            </p>
-          </button>
-          <button
-            className={`hover:bg-gray-200 flex items-center w-[${
-              expanded ? "200px" : "40px"
-            }] rounded-md mb-1`}>
-            <IoHelpCircleOutline className=' my-[6px] mx-2 cursor-pointer text-xl' />
-            <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-              {expanded ? "Resource center" : ""}
-            </p>
-          </button>
+          {buttons[2].map((button) => (
+            <SlidebarButton
+              key={button.id}
+              id={button.id}
+              button={button}
+              expanded={expanded}
+              activeIndex={activeIndex}
+              handleNavbar={handleNavbar}
+            />
+          ))}
         </div>
       </div>
       <ProfileModelOpen

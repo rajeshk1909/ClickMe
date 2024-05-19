@@ -35,9 +35,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {navbar === "home" ? (
+      {navbar === "Home" ? (
         <HomeNavbar />
-      ) : navbar === "inbox" ? (
+      ) : navbar === "Inbox" ? (
         <InboxNavbar />
       ) : (
         ""
