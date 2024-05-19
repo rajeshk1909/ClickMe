@@ -23,6 +23,8 @@ const Slidebar = () => {
     (state: RootState) => state.userData.currentUserData
   )
 
+  const [activeIndex, setActiveIndex] = React.useState<number>(0)
+
   const [open, setOpen] = React.useState<any>(false)
 
   const dispatch = useDispatch()
@@ -35,9 +37,43 @@ const Slidebar = () => {
     dispatch(setExpanded(!expanded))
   }
 
-  const handleNavbar = (key: string) => {
+  const handleNavbar = (key: string, index: number) => {
+    setActiveIndex(index)
     dispatch(setNavbar(key))
   }
+
+  const buttons = [
+    {
+      icon: <GoHome className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Home",
+    },
+    {
+      icon: <FiInbox className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Inbox",
+    },
+    {
+      icon: (
+        <IoDocumentTextOutline className='my-[6px] mx-2 cursor-pointer text-xl' />
+      ),
+      buttonLabel: "Docs",
+    },
+    {
+      icon: <MdDashboard className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Dashboards",
+    },
+    {
+      icon: <GoVideo className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Clips",
+    },
+    {
+      icon: <RxLapTimer className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "Timesheets",
+    },
+    {
+      icon: <CgMoreO className='my-[6px] mx-2 cursor-pointer text-xl' />,
+      buttonLabel: "More",
+    },
+  ]
 
   return (
     <div>
@@ -86,90 +122,28 @@ const Slidebar = () => {
           </div>
 
           <div className='flex flex-col items-center'>
-            <button
-              onClick={() => {
-                handleNavbar("home")
-              }}
-              className={`bg-[#e5e4fc] flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              }  rounded-md my-1`}>
-              <GoHome className=' my-[6px] mx-[8px] cursor-pointer text-[#7670d5] text-xl' />
-              <p
-                className={`${
-                  expanded ? "font-semibold text-[14px] text-[#7670d5] " : ""
-                }`}>
-                {expanded ? "Home" : ""}
-              </p>
-            </button>
-            <button
-              onClick={() => {
-                handleNavbar("inbox")
-              }}
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <FiInbox className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "Inbox" : ""}
-              </p>
-            </button>
-            <button
-              onClick={() => {
-                handleNavbar("docs")
-              }}
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <IoDocumentTextOutline className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "Docs" : ""}
-              </p>
-            </button>
-            <button
-              onClick={() => {
-                handleNavbar("dashboards")
-              }}
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <MdDashboard className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "Dashboards" : ""}
-              </p>
-            </button>
-            <button
-              onClick={() => {
-                handleNavbar("clips")
-              }}
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <GoVideo className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "Clips" : ""}
-              </p>
-            </button>
-            <button
-              onClick={() => {
-                handleNavbar("timesheets")
-              }}
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <RxLapTimer className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "Timesheets" : ""}
-              </p>
-            </button>
-            <button
-              className={`hover:bg-gray-200 flex items-center ${
-                expanded ? "w-[200px]" : "w-[40px]"
-              } rounded-md mb-1`}>
-              <CgMoreO className=' my-[6px] mx-2 cursor-pointer text-xl' />
-              <p className={`${expanded ? "font-semibold text-[14px] " : ""}`}>
-                {expanded ? "More" : ""}
-              </p>
-            </button>
+            {buttons.map((button, index) => (
+              <button
+                key={index}
+                onClick={() => {
+                  handleNavbar(button.buttonLabel, index)
+                }}
+                className={`hover:bg-gray-200 flex items-center ${
+                  expanded ? "w-[200px]" : "w-[40px]"
+                } ${
+                  activeIndex === index
+                    ? "bg-[#e5e4fc] hover:bg-[#e5e4fc] text-[#7670d5] "
+                    : ""
+                } rounded-md my-1`}>
+                {button.icon}
+                <p
+                  className={`${
+                    expanded ? "font-semibold text-[14px]" : ""
+                  }`}>
+                  {expanded ? button.buttonLabel : ""}
+                </p>
+              </button>
+            ))}
             <div
               className={` ${
                 expanded ? "w-[220px]" : "w-[60px]"
