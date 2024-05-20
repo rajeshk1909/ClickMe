@@ -7,6 +7,7 @@ import Login from "./Auth/Login/Login.tsx"
 import SignUp from "./Auth/SignUp/SignUp.tsx"
 import { Provider } from "react-redux"
 import store from "./redux/store/store.ts"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
