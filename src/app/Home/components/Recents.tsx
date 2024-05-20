@@ -1,11 +1,58 @@
 import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import { IoReorderFour } from "react-icons/io5"
-import { LuDot } from "react-icons/lu"
-import { ImNewTab } from "react-icons/im"
 import { CiFolderOn } from "react-icons/ci"
 import { BiTask } from "react-icons/bi"
 import { FaUserGroup } from "react-icons/fa6"
+import RecentsButton from "./RecentsButton"
+
+const items = [
+  {
+    icon: <IoReorderFour />,
+    label: "Project 1",
+    sublabel: "in Projects",
+  },
+  {
+    icon: <CiFolderOn />,
+    label: "Projects",
+    sublabel: "in Team Space",
+  },
+  {
+    icon: <IoReorderFour />,
+    label: "Project 2",
+    sublabel: "in Projects",
+  },
+  {
+    icon: <FaUserGroup className='text-[#03a2fd]' />,
+    label: "Team Space",
+    sublabel: "",
+  },
+  {
+    icon: <BiTask />,
+    label: "Task 1",
+    sublabel: "in Projects",
+  },
+  {
+    icon: <IoReorderFour />,
+    label: "Project 1",
+    sublabel: "in Projects",
+  },
+  {
+    icon: <BiTask />,
+    label: "Task 3",
+    sublabel: "in Project 2",
+  },
+  {
+    icon: <BiTask />,
+    label: "Task 3",
+    sublabel: "in Project 1",
+  },
+  {
+    icon: <BiTask />,
+    label: "Task 2",
+    sublabel: "in Project 1",
+  },
+]
 
 const Recends = () => {
   return (
@@ -24,180 +71,14 @@ const Recends = () => {
         </div>
 
         <div className='overflow-y-scroll h-[250px]'>
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <IoReorderFour />
-              <p className='ml-3 mr-1'>Project 1</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <CiFolderOn />
-              <p className='ml-3 mr-1'>Projects</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Team Space
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <IoReorderFour />
-              <p className='ml-3 mr-1'>Project 2</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <FaUserGroup className='text-[#03a2fd]' />
-              <p className='ml-3 mr-1'>Team Space</p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <BiTask />
-              <p className='ml-3 mr-1'>Task 1</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <IoReorderFour />
-              <p className='ml-3 mr-1'>Project 1</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <BiTask />
-              <p className='ml-3 mr-1'>Task 3</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects 2
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <BiTask />
-              <p className='ml-3 mr-1'>Task 3</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects 1
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
-
-          <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
-            <div className='flex items-center'>
-              <BiTask />
-              <p className='ml-3 mr-1'>Task 2</p>
-
-              <p className='text-gray-400 text-sm flex items-center'>
-                {" "}
-                <LuDot /> in Projects 1
-              </p>
-            </div>
-            <div className='group-hover:flex hidden  items-center'>
-              <button className='hover:bg-gray-200 mr-1 border bg-white  rounded-md'>
-                <ImNewTab className=' m-1 cursor-pointer text-sm' />
-              </button>
-              <button className='hover:bg-gray-200 border bg-white  rounded-md'>
-                <AiOutlineFullscreen className=' m-1 cursor-pointer text-sm' />
-              </button>
-            </div>
-          </div>
+          {items.map((item, index) => (
+            <RecentsButton
+              key={index}
+              icon={item.icon}
+              label={item.label}
+              sublabel={item.sublabel}
+            />
+          ))}
         </div>
       </div>
     </div>

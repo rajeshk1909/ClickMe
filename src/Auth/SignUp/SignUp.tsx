@@ -4,6 +4,7 @@ import logo from "../../assets/clickup_logo.svg"
 import { useSelector, useDispatch } from "react-redux"
 import {
   setCurrentUserData,
+  setIsUserLogIn,
   setUserData,
   UserDataTypes,
 } from "../../redux/features/userData"
@@ -98,6 +99,7 @@ const SignUp = () => {
         dispatch(setCurrentUserData(val))
         const newData = userData.length ? [...userData, val] : [val]
         dispatch(setUserData(newData))
+        dispatch(setIsUserLogIn(true))
         navigate("/")
       }
     }

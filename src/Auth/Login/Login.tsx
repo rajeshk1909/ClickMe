@@ -4,6 +4,7 @@ import logo from "../../assets/clickup_logo.svg"
 import { useSelector, useDispatch } from "react-redux"
 import {
   setCurrentUserData,
+  setIsUserLogIn,
   UserDataTypes,
 } from "../../redux/features/userData"
 import { RootState } from "../../redux/store/store"
@@ -52,6 +53,7 @@ const Login = () => {
     if (currentUser) {
       if (userValError.password && currentUser.password === values.password) {
         dispatch(setCurrentUserData(currentUser))
+        dispatch(setIsUserLogIn(true))
         navigate("/")
       } else {
         alert("Enter correct password.")

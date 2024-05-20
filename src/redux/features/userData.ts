@@ -8,7 +8,8 @@ export interface UserDataTypes {
     expanded?: boolean
     toggleSwitch?: boolean
     navbarLabel?: string
-    navbarId?:number | undefined
+    navbarId?: number | undefined
+    IsUserLogIn?: boolean
 }
 
 export interface UserDataState {
@@ -16,14 +17,20 @@ export interface UserDataState {
     currentUserData: UserDataTypes;
     expanded: boolean; 
     toggleSwitch: boolean;
-    navbar:UserDataTypes
+    navbar: UserDataTypes
+    IsUserLogIn:boolean
 }
 
 const userdata = localStorage.getItem("userData");
 const newUserData: UserDataTypes[] = userdata !== null ? JSON.parse(userdata) : [];
 
 const currentUserData = localStorage.getItem("currentUserData");
-const newCurrentUserData: UserDataTypes = currentUserData !== null ? JSON.parse(currentUserData) : [];
+const newCurrentUserData: UserDataTypes = currentUserData !== null ? JSON.parse(currentUserData) : {
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+      }
 
 const switchData = localStorage.getItem("toggleSwitch");
 const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
@@ -34,12 +41,16 @@ const newNavbar: UserDataTypes = navbar !== null ? JSON.parse(navbar) : {
     navbarId :1
 }
 
+const logIn = localStorage.getItem("isUserLogin")
+const newLogIn :boolean = logIn !== null ? JSON.parse(logIn) : false 
+
 const initialState: UserDataState = {
     userData: newUserData,
     currentUserData: newCurrentUserData,
     expanded: false,
     toggleSwitch: newSwitchData,
-    navbar:newNavbar,
+    navbar: newNavbar,
+    IsUserLogIn : newLogIn,
 };
 
 const userDataSlice = createSlice({
@@ -60,10 +71,13 @@ const userDataSlice = createSlice({
         },
         setNavbar: (state, action: PayloadAction<UserDataTypes>) => {
             state.navbar = action.payload
+        },
+        setIsUserLogIn: (state, action: PayloadAction<boolean>) => {
+            state.IsUserLogIn = action.payload
         }
     },
 });
 
-export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData, setNavbar } = userDataSlice.actions;
+export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData, setNavbar ,setIsUserLogIn } = userDataSlice.actions;
 
 export default userDataSlice.reducer;
