@@ -8,12 +8,12 @@ import SignUp from "./Auth/SignUp/SignUp.tsx"
 import { Provider } from "react-redux"
 import store from "./redux/store/store.ts"
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
+          <Route index element={<App />} />
           <Route path='Login' element={<Login />} />
           <Route path='SignUp' element={<SignUp />} />
           <Route path='/' element={<App />} />

@@ -52,7 +52,7 @@ const Login = () => {
     if (currentUser) {
       if (userValError.password && currentUser.password === values.password) {
         dispatch(setCurrentUserData(currentUser))
-        navigate("/Home")
+        navigate("/")
       } else {
         alert("Enter correct password.")
       }

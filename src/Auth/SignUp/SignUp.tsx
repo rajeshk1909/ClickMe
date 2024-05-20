@@ -98,7 +98,7 @@ const SignUp = () => {
         dispatch(setCurrentUserData(val))
         const newData = userData.length ? [...userData, val] : [val]
         dispatch(setUserData(newData))
-        navigate("/Home")
+        navigate("/")
       }
     }
   }
