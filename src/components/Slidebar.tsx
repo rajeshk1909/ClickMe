@@ -95,7 +95,10 @@ const Slidebar = () => {
   )
 
   const [open, setOpen] = React.useState<boolean>(false)
-  const [activeIndex, setActiveIndex] = React.useState<number>(1)
+  const navbar = useSelector((state: RootState) => state.userData.navbar)
+  const [activeIndex, setActiveIndex] = React.useState<number | undefined>(
+    navbar ? navbar.navbarId : 1
+  )
 
   const dispatch = useDispatch()
 
@@ -105,7 +108,12 @@ const Slidebar = () => {
 
   const handleNavbar = (label: string, index: number) => {
     setActiveIndex(index)
-    dispatch(setNavbar(label))
+    dispatch(
+      setNavbar({
+        navbarLabel: label,
+        navbarId: index,
+      })
+    )
   }
 
   const handleCollapseSlidebar = () => {
@@ -116,7 +124,7 @@ const Slidebar = () => {
     <div>
       <div
         className={` h-[95vh] ${
-          expanded ? "w-[220px]" : "w-[60px]"
+          expanded ? "w-[220px]" : "w-[56px]"
         } duration-100 fixed group border-r text-xl flex justify-between items-center pb-2 bg-gray-100 flex-col`}>
         <div className='flex flex-col items-center'>
           <div
@@ -126,8 +134,8 @@ const Slidebar = () => {
               }
             }}
             className={`${
-              expanded ? "w-[220px]" : "w-[60px] ml-1 hover:bg-gray-200"
-            }   border-b justify-between h-[55px] flex items-center`}>
+              expanded ? "w-[220px]" : "w-[56px] ml-1 hover:bg-gray-200"
+            }   border-b justify-between h-[48px] flex items-center`}>
             <button
               onClick={() => {
                 {

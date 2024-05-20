@@ -5,11 +5,10 @@ import calendarIcon from "../../../assets/calendarIcon.svg"
 import { CiCalendar } from "react-icons/ci"
 
 const Agenda = () => {
-  const currentDate = new Date() 
-  const currentDay = currentDate.getDay()
+  const currentDate = new Date()
+  const currentDay = currentDate.getDate()
   const monthName = currentDate.toLocaleDateString("en-US", { month: "long" })
   const dayName = currentDate.toLocaleDateString("en-US", { weekday: "long" })
-
   return (
     <div className='flex justify-center'>
       <div className='w-[100%] p-5 border-2 hover:shadow-[25px] hover:border rounded-xl '>

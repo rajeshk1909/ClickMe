@@ -19,25 +19,36 @@ import {
 } from "../../../redux/features/userData"
 
 function App() {
+  const dispatch = useDispatch()
+
   const expanded = useSelector((state: RootState) => state.userData.expanded)
 
   const toggleSwitch = useSelector(
     (state: RootState) => state.userData.toggleSwitch
   )
 
-  const dispatch = useDispatch()
+  const navbar = useSelector((state: RootState) => state.userData.navbar)
 
   useEffect(() => {
+    if (toggleSwitch === null) {
+      dispatch(setToggleSwitchData(true))
+    }
+    if (navbar === null) {
+      dispatch(
+        setNavbar({
+          navbarLabel: "Home",
+          navbarId: 1,
+        })
+      )
+    }
     dispatch(setExpanded(false))
-    dispatch(setToggleSwitchData(true))
-    dispatch(setNavbar("home"))
   }, [])
 
   return (
     <div>
       <TopNavbar />
       <Slidebar />
-      <div className={`${expanded ? "ml-[220px]" : "ml-[60px]"}`}>
+      <div className={`${expanded ? "ml-[220px]" : "ml-[56px]"}`}>
         <Navbar />
         {toggleSwitch ? <Greeting /> : ""}
         <div

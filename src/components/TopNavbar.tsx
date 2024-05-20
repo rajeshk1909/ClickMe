@@ -9,7 +9,28 @@ import { IoDocumentTextOutline } from "react-icons/io5"
 import { TbGridDots } from "react-icons/tb"
 import { GiUpgrade } from "react-icons/gi"
 import ProfileEditOpen from "./ProfileEditOpen"
+import TopNavbarButton from "./TopNavbarButton"
 
+const buttons = [
+  {
+    icon: <SiTicktick className='my-2 mx-2 ' />,
+  },
+  {
+    icon: <MdEventNote className='my-2 mx-2 ' />,
+  },
+  {
+    icon: <CiVideoOn className='my-2 mx-2 ' />,
+  },
+  {
+    icon: <LuAlarmClock className='my-2 mx-2 ' />,
+  },
+  {
+    icon: <IoDocumentTextOutline className='my-2 mx-2 ' />,
+  },
+  {
+    icon: <TbGridDots className='my-2 mx-2 ' />,
+  },
+]
 
 const TopNavbar = () => {
   return (
@@ -41,24 +62,9 @@ const TopNavbar = () => {
           <p>New</p>
         </button>
         <div className='flex items-center border-l text-[14px] '>
-          <button className='hover:bg-[#a5a8bd] ml-2 rounded-md '>
-            <SiTicktick className='my-2 mx-2 ' />
-          </button>
-          <button className='hover:bg-[#a5a8bd] ml-2 rounded-md '>
-            <MdEventNote className='my-2 mx-2 ' />
-          </button>
-          <button className='hover:bg-[#a5a8bd] ml-2 rounded-md '>
-            <CiVideoOn className='my-2 mx-2 ' />
-          </button>
-          <button className='hover:bg-[#a5a8bd] ml-2 rounded-md '>
-            <LuAlarmClock className='my-2 mx-2 ' />
-          </button>
-          <button className='hover:bg-[#a5a8bd] ml-2 rounded-md '>
-            <IoDocumentTextOutline className='my-2 mx-2 ' />
-          </button>
-          <button className='hover:bg-[#a5a8bd] ml-2 mr-4 rounded-md '>
-            <TbGridDots className='my-2 mx-2 ' />
-          </button>
+          {buttons.map((button, index) => (
+            <TopNavbarButton button={button} key={index} />
+          ))}
           <ProfileEditOpen />
         </div>
       </div>

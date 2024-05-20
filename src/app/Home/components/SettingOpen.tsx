@@ -61,7 +61,7 @@ const IOSSwitch = styled((props: SwitchProps) => (
 }))
 
 const SettingOpen = () => {
-  const [open, setOpen] = React.useState<any>(false)
+  const [open, setOpen] = React.useState<boolean>(false)
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const dispatch = useDispatch()
@@ -103,7 +103,7 @@ const SettingOpen = () => {
                   onClick={() => {
                     handleToggleSwitchData()
                   }}
-                  defaultChecked
+                  checked={toggleSwitch}
                 />
               }
               label=''

@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface UserDataTypes {
-    id: number;
-    name: string;
-    email: string;
-    password: string;
-    expanded?: boolean,
-    toggleSwitch?: boolean,
-    navbar?:string,
+    id?: number | string
+    name?: string 
+    email?: string
+    password?: string
+    expanded?: boolean
+    toggleSwitch?: boolean
+    navbarLabel?: string
+    navbarId?:number | undefined
 }
 
 export interface UserDataState {
@@ -15,7 +16,7 @@ export interface UserDataState {
     currentUserData: UserDataTypes;
     expanded: boolean; 
     toggleSwitch: boolean;
-    navbar:string
+    navbar:UserDataTypes
 }
 
 const userdata = localStorage.getItem("userData");
@@ -31,7 +32,7 @@ const switchData = localStorage.getItem("toggleSwitch");
 const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
 
 const navbar = localStorage.getItem("navbar");
-const newNavbar : string = navbar !== null ? JSON.parse(navbar) : "home"
+const newNavbar : UserDataTypes = navbar !== null ? JSON.parse(navbar) : "Home"
 
 const initialState: UserDataState = {
     userData: newUserData,
@@ -57,7 +58,7 @@ const userDataSlice = createSlice({
         setToggleSwitchData: (state, action: PayloadAction<boolean>) => { 
             state.toggleSwitch = action.payload;
         },
-        setNavbar: (state, action: PayloadAction<string>) => {
+        setNavbar: (state, action: PayloadAction<UserDataTypes>) => {
             state.navbar = action.payload
         }
     },

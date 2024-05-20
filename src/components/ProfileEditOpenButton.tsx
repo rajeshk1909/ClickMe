@@ -1,4 +1,6 @@
+import { useDispatch } from "react-redux"
 import { useNavigate } from "react-router-dom"
+import { setCurrentUserData } from "../redux/features/userData"
 
 type buttonPropsTypes = {
   button: {
@@ -10,9 +12,18 @@ type buttonPropsTypes = {
 }
 
 const ProfileEditOpenButton = ({ button }: buttonPropsTypes) => {
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const handleLogout = () => {
     navigate("/")
+    dispatch(
+      setCurrentUserData({
+        id: "",
+        name: "",
+        email: "",
+        password: "",
+      })
+    )
   }
 
   return (

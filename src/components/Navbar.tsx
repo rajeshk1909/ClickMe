@@ -17,7 +17,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className='border-b h-14 items-center bg-white top-10 flex sticky'>
+    <div className='border-b h-12 items-center bg-white top-10 flex sticky'>
       <div className='flex items-center '>
         {!expanded ? (
           <button
@@ -35,9 +35,9 @@ const Navbar = () => {
         </button>
       </div>
 
-      {navbar === "Home" ? (
+      {navbar.navbarLabel === "Home" || navbar.navbarLabel === "" ? (
         <HomeNavbar />
-      ) : navbar === "Inbox" ? (
+      ) : navbar.navbarLabel === "Inbox" ? (
         <InboxNavbar />
       ) : (
         ""

@@ -9,7 +9,6 @@ import { FaDownload, FaArrowUpRightFromSquare } from "react-icons/fa6"
 import { CiGift } from "react-icons/ci"
 import { IoMdHelpCircleOutline } from "react-icons/io"
 import { TbLogout2 } from "react-icons/tb"
-import { useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store/store"
 import ProfileEditOpenButton from "./ProfileEditOpenButton"
@@ -92,8 +91,7 @@ const ProfileEditOpen = () => {
   const handleOpen = () => setOpen(true)
   const handleClose = () => setOpen(false)
   const name = curruntUserData?.name?.split(" ")
-  const navigate = useNavigate()
-  const avatar = name
+  const avatarName = name
     ? name.length > 1
       ? name[0].slice(0, 1) + name[1].slice(0, 1)
       : name[0].slice(0, 1)
@@ -105,9 +103,9 @@ const ProfileEditOpen = () => {
         onClick={() => {
           handleOpen()
         }}
-        className='hover:bg-[#a5a8bd] flex items-center justify-center rounded-md '>
+        className='hover:bg-[#a5a8bd] ml-3 flex items-center justify-center rounded-md '>
         <p className='w-5 h-5 m-1 text-[10px] capitalize rounded-[50%] bg-[#7b68ee] flex items-center justify-center'>
-          {avatar}
+          {avatarName}
         </p>
       </button>
 
@@ -123,7 +121,7 @@ const ProfileEditOpen = () => {
             <div className='flex w-[230px] pt-3 items-center'>
               <button className='bg-[#7b68ee] rounded-[50%]'>
                 <p className='text-[10px] h-8 w-8 flex items-center justify-center font-semibold text-white '>
-                  {avatar}
+                  {avatarName}
                 </p>
               </button>
               <div className=' ml-3 '>

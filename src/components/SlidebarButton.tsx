@@ -6,7 +6,7 @@ type SlidebarButtonTypes = {
     buttonLabel: string
   }
   expanded: boolean
-  activeIndex: number
+  activeIndex: number | undefined
   handleNavbar: (label: string, id: number) => void
 }
 
