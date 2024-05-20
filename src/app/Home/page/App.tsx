@@ -13,10 +13,10 @@ import { RootState } from "../../../redux/store/store"
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
 import {
-  setExpanded,
   setNavbar,
   setToggleSwitchData,
 } from "../../../redux/features/userData"
+
 
 function App() {
   const dispatch = useDispatch()
@@ -28,6 +28,7 @@ function App() {
   )
 
   const navbar = useSelector((state: RootState) => state.userData.navbar)
+
 
   useEffect(() => {
     if (toggleSwitch === null) {
@@ -41,7 +42,6 @@ function App() {
         })
       )
     }
-    dispatch(setExpanded(false))
   }, [])
 
   return (

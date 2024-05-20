@@ -21,7 +21,7 @@ const InboxNavbar = () => {
           Inbox
         </p>
         <div className='flex items-center h-5 px-3 border-l'>
-          {buttons.map((label, index) => (
+          {buttons?.map((label, index) => (
             <InboxNavbarButton
               label={label}
               activeIndex={activeIndex}

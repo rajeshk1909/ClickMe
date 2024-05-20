@@ -25,19 +25,19 @@ const newUserData: UserDataTypes[] = userdata !== null ? JSON.parse(userdata) : 
 const currentUserData = localStorage.getItem("currentUserData");
 const newCurrentUserData: UserDataTypes = currentUserData !== null ? JSON.parse(currentUserData) : [];
 
-const expandedData = localStorage.getItem("expanded");
-const newExpanded: boolean = expandedData !== null ? JSON.parse(expandedData) : false;
-
 const switchData = localStorage.getItem("toggleSwitch");
 const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
 
 const navbar = localStorage.getItem("navbar");
-const newNavbar : UserDataTypes = navbar !== null ? JSON.parse(navbar) : "Home"
+const newNavbar: UserDataTypes = navbar !== null ? JSON.parse(navbar) : {
+    navbarLabel: "Home",
+    navbarId :1
+}
 
 const initialState: UserDataState = {
     userData: newUserData,
     currentUserData: newCurrentUserData,
-    expanded: newExpanded,
+    expanded: false,
     toggleSwitch: newSwitchData,
     navbar:newNavbar,
 };

@@ -138,7 +138,7 @@ const ProfileEditOpen = () => {
               <ProfileEditOpenButton button={button} key={button.id} />
             ))}
           </div>
-          
+
           <div className='border-y flex flex-col items-center py-2'>
             {buttons[1].map((button) => (
               <ProfileEditOpenButton button={button} key={button.id} />
