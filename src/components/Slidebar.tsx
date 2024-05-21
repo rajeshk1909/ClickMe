@@ -15,6 +15,7 @@ import * as React from "react"
 import { RootState } from "../redux/store/store"
 import SlidebarButton from "./SlidebarButton"
 import { useNavigate } from "react-router-dom"
+import useHandleLogOut from "../lib/useHandleLogOut"
 
 const buttons = [
   [
@@ -89,6 +90,7 @@ const buttons = [
 const Slidebar = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const handleLogOut = useHandleLogOut()
 
   const currentUserData = useSelector(
     (state: RootState) => state.userData.currentUserData
@@ -99,7 +101,7 @@ const Slidebar = () => {
 
   React.useEffect(() => {
     if (!isUserLogIn || currentUserData.email === "") {
-      navigate("/login")
+      handleLogOut()
     }
   }, [])
 

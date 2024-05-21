@@ -1,4 +1,4 @@
-import handleLogOut from "../lib/handleLogOut"
+import useHandleLogOut from "../lib/useHandleLogOut"
 
 type buttonPropsTypes = {
   button: {
@@ -10,11 +10,14 @@ type buttonPropsTypes = {
 }
 
 const ProfileEditOpenButton = ({ button }: buttonPropsTypes) => {
+  const handleLogOut = useHandleLogOut()
 
   return (
     <button
       onClick={() => {
-        button.id === 10 ? handleLogOut() : ""
+        if (button.id === 10) {
+          handleLogOut()
+        }
       }}
       className='flex items-center justify-between text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
       <div className='flex items-center'>
