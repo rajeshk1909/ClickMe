@@ -1,6 +1,4 @@
-import { useDispatch } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import { setCurrentUserData, setIsUserLogIn } from "../redux/features/userData"
+import handleLogOut from "../lib/handleLogOut"
 
 type buttonPropsTypes = {
   button: {
@@ -12,25 +10,11 @@ type buttonPropsTypes = {
 }
 
 const ProfileEditOpenButton = ({ button }: buttonPropsTypes) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const handleLogout = () => {
-    navigate("/")
-    dispatch(setIsUserLogIn(false))
-    dispatch(
-      setCurrentUserData({
-        id: "",
-        name: "",
-        email: "",
-        password: "",
-      })
-    )
-  }
 
   return (
     <button
       onClick={() => {
-        button.id === 10 ? handleLogout() : ""
+        button.id === 10 ? handleLogOut() : ""
       }}
       className='flex items-center justify-between text-[14px] px-2 w-[230px]  rounded-md hover:bg-gray-200'>
       <div className='flex items-center'>

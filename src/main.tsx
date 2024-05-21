@@ -7,6 +7,7 @@ import Login from "./Auth/Login/Login.tsx"
 import SignUp from "./Auth/SignUp/SignUp.tsx"
 import { Provider } from "react-redux"
 import store from "./redux/store/store.ts"
+import Inbox from "./app/Inbox/page/Inbox.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path='/login' element={<Login />} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/' element={<App />} />
+          <Route path='/Inbox' element={<Inbox />} />
         </Routes>
       </BrowserRouter>
     </Provider>

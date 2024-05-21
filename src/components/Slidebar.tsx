@@ -14,6 +14,7 @@ import ProfileModelOpen from "../components/ProfileModelOpen"
 import * as React from "react"
 import { RootState } from "../redux/store/store"
 import SlidebarButton from "./SlidebarButton"
+import { useNavigate } from "react-router-dom"
 
 const buttons = [
   [
@@ -86,12 +87,24 @@ const buttons = [
 ]
 
 const Slidebar = () => {
-  const expanded: boolean = useSelector(
-    (state: RootState) => state.userData.expanded
-  )
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const currentUserData = useSelector(
     (state: RootState) => state.userData.currentUserData
+  )
+  const isUserLogIn = useSelector(
+    (state: RootState) => state.userData.isUserLogIn
+  )
+
+  React.useEffect(() => {
+    if (!isUserLogIn || currentUserData.email === "") {
+      navigate("/login")
+    }
+  }, [])
+
+  const expanded: boolean = useSelector(
+    (state: RootState) => state.userData.expanded
   )
 
   const [open, setOpen] = React.useState<boolean>(false)
@@ -99,8 +112,6 @@ const Slidebar = () => {
   const [activeIndex, setActiveIndex] = React.useState<number | undefined>(
     navbar ? navbar.navbarId : 1
   )
-
-  const dispatch = useDispatch()
 
   const handleClose = () => setOpen(false)
 
@@ -114,6 +125,11 @@ const Slidebar = () => {
         navbarId: index,
       })
     )
+    label === "Home"
+      ? navigate("/")
+      : label === "Inbox"
+      ? navigate("/inbox")
+      : ""
   }
 
   const handleCollapseSlidebar = () => {

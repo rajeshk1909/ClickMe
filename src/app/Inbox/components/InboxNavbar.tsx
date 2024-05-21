@@ -3,14 +3,24 @@ import { FiInbox } from "react-icons/fi"
 import InboxNavbarButton from "./InboxNavbarButton"
 import { IoFilterSharp, IoSettingsOutline } from "react-icons/io5"
 import { MdOutlineDoneAll } from "react-icons/md"
+import { useDispatch } from "react-redux"
+import { setInBoxNav } from "../../../redux/features/InboxData"
 
 const InboxNavbar = () => {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState<number>(0)
 
   const buttons = ["Important", "Other", "Snoozed", "Cleared"]
 
-  const handleButtonClick = (index: number) => {
+  const dispatch = useDispatch()
+
+  const handleButtonClick = (index: number, label: string) => {
     setActiveIndex(index)
+    dispatch(
+      setInBoxNav({
+        id: index,
+        label,
+      })
+    )
   }
 
   return (
@@ -45,7 +55,7 @@ const InboxNavbar = () => {
             <p className='text-[14px] mx-2 mr-1 font-semibold'> Clear all </p>
           </p>
         </button>
-        <div className="border-l h-4 flex items-center pl-2">
+        <div className='border-l h-4 flex items-center pl-2'>
           <button className='hover:bg-gray-200 flex items-center justify-center rounded-md '>
             <IoSettingsOutline className=' my-2 mx-2 cursor-pointer text-base' />
           </button>

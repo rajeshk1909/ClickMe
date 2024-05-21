@@ -10,56 +10,14 @@ import LineUp from "../components/LineUp"
 import AiStandUp from "../components/AiStandUp"
 import TopNavbar from "../../../components/TopNavbar"
 import { RootState } from "../../../redux/store/store"
-import { useEffect } from "react"
-import { useDispatch } from "react-redux"
-import {
-  setCurrentUserData,
-  setNavbar,
-  setToggleSwitchData,
-} from "../../../redux/features/userData"
-import { useNavigate } from "react-router-dom"
+
 
 function App() {
   const expanded = useSelector((state: RootState) => state.userData.expanded)
   const toggleSwitch = useSelector(
     (state: RootState) => state.userData.toggleSwitch
   )
-  const navbar = useSelector((state: RootState) => state.userData.navbar)
-  const isUserLogIn = useSelector(
-    (state: RootState) => state.userData.IsUserLogIn
-  )
-
-  const currentUserData = useSelector(
-    (state: RootState) => state.userData.currentUserData
-  )
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!isUserLogIn || currentUserData.email === "") {
-      navigate("/login")
-      dispatch(
-        setCurrentUserData({
-          id: "",
-          name: "",
-          email: "",
-          password: "",
-        })
-      )
-    }
-    if (toggleSwitch === null) {
-      dispatch(setToggleSwitchData(true))
-    }
-    if (navbar === null) {
-      dispatch(
-        setNavbar({
-          navbarLabel: "Home",
-          navbarId: 1,
-        })
-      )
-    }
-  }, [])
+  
 
   return (
     <div>

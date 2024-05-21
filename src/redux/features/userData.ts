@@ -9,7 +9,7 @@ export interface UserDataTypes {
     toggleSwitch?: boolean
     navbarLabel?: string
     navbarId?: number | undefined
-    IsUserLogIn?: boolean
+    isUserLogIn?: boolean
 }
 
 export interface UserDataState {
@@ -18,7 +18,7 @@ export interface UserDataState {
     expanded: boolean; 
     toggleSwitch: boolean;
     navbar: UserDataTypes
-    IsUserLogIn:boolean
+    isUserLogIn:boolean
 }
 
 const userdata = localStorage.getItem("userData");
@@ -50,7 +50,7 @@ const initialState: UserDataState = {
     expanded: false,
     toggleSwitch: newSwitchData,
     navbar: newNavbar,
-    IsUserLogIn : newLogIn,
+    isUserLogIn : newLogIn,
 };
 
 const userDataSlice = createSlice({
@@ -73,7 +73,7 @@ const userDataSlice = createSlice({
             state.navbar = action.payload
         },
         setIsUserLogIn: (state, action: PayloadAction<boolean>) => {
-            state.IsUserLogIn = action.payload
+            state.isUserLogIn = action.payload
         }
     },
 });

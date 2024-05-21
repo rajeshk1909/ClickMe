@@ -2,15 +2,17 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import userDataReducer from "../features/userData";
+import inboxDataReducers from "../features/InboxData"
 
 const rootReducer = combineReducers({
-  userData: userDataReducer
+  userData: userDataReducer ,
+  inboxData : inboxDataReducers
 });
 
 const persistConfig = {
   key: 'clickMe',
   storage,
-  whitelist: ["userData"]
+  whitelist: ["userData" , "inboxData"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -2,7 +2,7 @@ type buttonPropsType = {
   label: string
   index: number
   activeIndex: number
-  handleButtonClick: (index: number) => void
+  handleButtonClick: (index: number, label:string) => void
 }
 
 const InboxNavbarButton = ({
@@ -20,7 +20,7 @@ const InboxNavbarButton = ({
           : "border-white text-[#8090a1]"
       }`}>
       <button
-        onClick={() => handleButtonClick(index)}
+        onClick={() => handleButtonClick(index , label)}
         className='my-2 px-3 py-1 hover:bg-gray-200 rounded-md'>
         {label}
       </button>
