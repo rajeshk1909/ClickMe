@@ -1,4 +1,6 @@
-import { useState } from "react"
+import Box from "@mui/material/Box"
+import TextField from "@mui/material/TextField"
+import { useState, ChangeEvent, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/clickup_logo.svg"
 import { useSelector, useDispatch } from "react-redux"
@@ -9,10 +11,13 @@ import {
   UserDataTypes,
 } from "../../redux/features/userData"
 import { RootState } from "../../redux/store/store"
+import useHandleLogOut from "../../lib/useHandleLogOut"
 
 const SignUp = () => {
   const navigate = useNavigate()
-
+  const currentUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
+  )
   const userData = useSelector((state: RootState) => state.userData.userData)
 
   const dispatch = useDispatch()
@@ -39,8 +44,15 @@ const SignUp = () => {
     password: false,
   })
 
+  const clearData = useHandleLogOut()
+  useEffect(() => {
+    if (currentUserData.email !== "") {
+      clearData()
+    }
+  })
+
   const handleOnChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     key: keyof ValuesType
   ) => {
     const val = { ...values, [key]: e.target.value }
@@ -124,54 +136,45 @@ const SignUp = () => {
             Seconds to sign up!
           </h1>
 
-          <form>
-            <div className='grid grid-rows-2'>
-              <label htmlFor='name' className='text-[12px] font-semibold '>
-                Full Name
-              </label>
-              <input
+          <Box
+            component='form'
+            sx={{
+              "& .MuiTextField-root": {
+                my: 1,
+                width: "100%",
+                fontSize: "14px",
+              },
+            }}
+            noValidate>
+            <div>
+              <TextField
                 type='text'
                 value={values.name}
                 onChange={(e) => handleOnChange(e, "name")}
-                placeholder='John Doe'
-                className='border px-3 rounded-md outline-none py-2'
+                label='Full Name'
                 autoComplete='current-name'
               />
-            </div>
-
-            <div className='grid my-5 grid-rows-2'>
-              <label htmlFor='email' className='text-[12px] font-semibold '>
-                Work Email
-              </label>
-              <input
-                type='text'
+              <TextField
                 value={values.email}
                 onChange={(e) => handleOnChange(e, "email")}
-                placeholder='example@site.com'
-                className='border px-3 rounded-md outline-none py-2'
+                type='email'
+                label='E-mail'
                 autoComplete='current-email'
               />
-            </div>
-
-            <div className='grid my-5 grid-rows-2'>
-              <label htmlFor='password' className='text-[12px] font-semibold '>
-                Password
-              </label>
-              <input
-                type='password'
+              <TextField
                 value={values.password}
                 onChange={(e) => handleOnChange(e, "password")}
-                placeholder='Minimum 8 characters'
-                className='border px-3 rounded-md outline-none py-2'
+                type='password'
+                label='Password'
                 autoComplete='current-password'
               />
             </div>
-          </form>
+          </Box>
           <button
             onClick={() => {
               handleSignUp()
             }}
-            className=' w-[100%] bg-[#7b68ee] hover:bg-[#5f48ea] font-bold text-white rounded-md py-3 px-5'>
+            className=' w-[100%] bg-[#7b68ee] hover:bg-[#5f48ea] mt-1 font-bold text-white rounded-md py-3 px-5'>
             Sign Up
           </button>
         </div>

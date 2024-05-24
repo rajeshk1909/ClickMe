@@ -120,7 +120,7 @@ const ProfileEditOpen = () => {
           <div className='flex items-center justify-center '>
             <div className='flex w-[230px] pt-3 items-center'>
               <button className='bg-[#7b68ee] rounded-[50%]'>
-                <p className='text-[10px] h-8 w-8 flex items-center justify-center font-semibold text-white '>
+                <p className='text-[10px] h-8 w-8 flex items-center capitalize justify-center font-semibold text-white '>
                   {avatarName}
                 </p>
               </button>

@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
 export interface UserDataTypes {
     id?: number | string
     name?: string 
@@ -7,17 +6,13 @@ export interface UserDataTypes {
     password?: string
     expanded?: boolean
     toggleSwitch?: boolean
-    navbarLabel?: string
-    navbarId?: number | undefined
     isUserLogIn?: boolean
 }
-
 export interface UserDataState {
     userData: UserDataTypes[];
     currentUserData: UserDataTypes;
     expanded: boolean; 
     toggleSwitch: boolean;
-    navbar: UserDataTypes
     isUserLogIn:boolean
 }
 
@@ -35,11 +30,6 @@ const newCurrentUserData: UserDataTypes = currentUserData !== null ? JSON.parse(
 const switchData = localStorage.getItem("toggleSwitch");
 const newSwitchData: boolean = switchData !== null ? JSON.parse(switchData) : true;
 
-const navbar = localStorage.getItem("navbar");
-const newNavbar: UserDataTypes = navbar !== null ? JSON.parse(navbar) : {
-    navbarLabel: "Home",
-    navbarId :1
-}
 
 const logIn = localStorage.getItem("isUserLogin")
 const newLogIn :boolean = logIn !== null ? JSON.parse(logIn) : false 
@@ -49,7 +39,6 @@ const initialState: UserDataState = {
     currentUserData: newCurrentUserData,
     expanded: false,
     toggleSwitch: newSwitchData,
-    navbar: newNavbar,
     isUserLogIn : newLogIn,
 };
 
@@ -69,15 +58,12 @@ const userDataSlice = createSlice({
         setToggleSwitchData: (state, action: PayloadAction<boolean>) => { 
             state.toggleSwitch = action.payload;
         },
-        setNavbar: (state, action: PayloadAction<UserDataTypes>) => {
-            state.navbar = action.payload
-        },
         setIsUserLogIn: (state, action: PayloadAction<boolean>) => {
             state.isUserLogIn = action.payload
         }
     },
 });
 
-export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData, setNavbar ,setIsUserLogIn } = userDataSlice.actions;
+export const { setUserData, setCurrentUserData, setExpanded, setToggleSwitchData ,setIsUserLogIn } = userDataSlice.actions;
 
 export default userDataSlice.reducer;

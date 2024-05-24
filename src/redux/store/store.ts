@@ -3,16 +3,20 @@ import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, 
 import storage from 'redux-persist/lib/storage';
 import userDataReducer from "../features/userData";
 import inboxDataReducers from "../features/InboxData"
+import navbarDataReducers from "../features/navbarData"
+
+
 
 const rootReducer = combineReducers({
   userData: userDataReducer ,
-  inboxData : inboxDataReducers
+  inboxData: inboxDataReducers,
+  navbarData:navbarDataReducers
 });
 
 const persistConfig = {
   key: 'clickMe',
   storage,
-  whitelist: ["userData" , "inboxData"]
+  whitelist: ["userData" , "inboxData","navbarData"]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

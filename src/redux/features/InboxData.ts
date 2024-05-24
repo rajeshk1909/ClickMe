@@ -15,7 +15,7 @@ const newNav : inboxDataType = nav !== null ? JSON.parse(nav) : {
     label:"Important"
 }
 
-const initialState = {
+const initialState :inboxDataState = {
     inboxNav :newNav
 }
 

@@ -1,3 +1,4 @@
+import * as React from "react"
 import { GoHome, GoVideo } from "react-icons/go"
 import { PiBookOpenTextLight } from "react-icons/pi"
 import { FiInbox } from "react-icons/fi"
@@ -8,14 +9,15 @@ import { CgMoreO } from "react-icons/cg"
 import { FaRegStar, FaChevronDown } from "react-icons/fa"
 import { BsPersonFillAdd } from "react-icons/bs"
 import { useSelector } from "react-redux"
-import { setExpanded, setNavbar } from "../redux/features/userData"
+import { setExpanded } from "../redux/features/userData"
 import { useDispatch } from "react-redux"
 import ProfileModelOpen from "../components/ProfileModelOpen"
-import * as React from "react"
 import { RootState } from "../redux/store/store"
 import SlidebarButton from "./SlidebarButton"
 import { useNavigate } from "react-router-dom"
 import useHandleLogOut from "../lib/useHandleLogOut"
+import { setNavbar } from "../redux/features/navbarData"
+import DocsModelOpen from "./DocsModelOpen"
 
 const buttons = [
   [
@@ -100,6 +102,7 @@ const Slidebar = () => {
   )
 
   React.useEffect(() => {
+    dispatch(setExpanded(false))
     if (!isUserLogIn || currentUserData.email === "") {
       handleLogOut()
     }
@@ -110,7 +113,7 @@ const Slidebar = () => {
   )
 
   const [open, setOpen] = React.useState<boolean>(false)
-  const navbar = useSelector((state: RootState) => state.userData.navbar)
+  const navbar = useSelector((state: RootState) => state.navbarData.navbar)
   const [activeIndex, setActiveIndex] = React.useState<number | undefined>(
     navbar ? navbar.navbarId : 1
   )
@@ -131,6 +134,8 @@ const Slidebar = () => {
       ? navigate("/")
       : label === "Inbox"
       ? navigate("/inbox")
+      : label === "Docs"
+      ? navigate("/docs")
       : ""
   }
 
@@ -233,6 +238,7 @@ const Slidebar = () => {
         handleClose={handleClose}
         open={open}
       />
+      <DocsModelOpen />
     </div>
   )
 }

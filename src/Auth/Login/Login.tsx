@@ -1,4 +1,6 @@
-import { useState } from "react"
+import Box from "@mui/material/Box"
+import TextField from "@mui/material/TextField"
+import { useState, ChangeEvent, useEffect } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import logo from "../../assets/clickup_logo.svg"
 import { useSelector, useDispatch } from "react-redux"
@@ -8,11 +10,20 @@ import {
   UserDataTypes,
 } from "../../redux/features/userData"
 import { RootState } from "../../redux/store/store"
+import useHandleLogOut from "../../lib/useHandleLogOut"
+
+interface ValuesType {
+  email: string
+  password: string
+}
 
 const Login = () => {
   const navigate = useNavigate()
 
   const userData = useSelector((state: RootState) => state.userData.userData)
+  const currentUserData = useSelector(
+    (state: RootState) => state.userData.currentUserData
+  )
 
   const dispatch = useDispatch()
 
@@ -26,7 +37,17 @@ const Login = () => {
     password: false,
   })
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>, key: any) => {
+  const clearData = useHandleLogOut()
+  useEffect(() => {
+    if (currentUserData.email !== "") {
+      clearData()
+    }
+  },[])
+
+  const handleOnChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    key: keyof ValuesType
+  ) => {
     let val = { ...values }
     val[key] = e.target.value
     setValues(val)
@@ -81,33 +102,29 @@ const Login = () => {
           <h1 className='my-5 text-center font-bold text-[28px] '>
             Welcome back!
           </h1>
-          <form>
-            <div className='grid grid-rows-2'>
-              <label htmlFor='email' className='text-[12px] font-semibold '>
-                Work Email
-              </label>
-              <input
-                type='text'
-                id='email'
+          <Box
+            component='form'
+            sx={{
+              "& .MuiTextField-root": {
+                my: 1,
+                width: "100%",
+                fontSize: "14px",
+              },
+            }}
+            noValidate>
+            <div>
+              <TextField
                 value={values.email}
                 onChange={(e) => handleOnChange(e, "email")}
-                placeholder='Enter your work email'
-                className='border px-3 rounded-md outline-none py-2'
-                autoComplete='email'
+                type='email'
+                label='E-mail'
+                autoComplete='current-email'
               />
-            </div>
-
-            <div className='grid my-5 grid-rows-2'>
-              <label htmlFor='password' className='text-[12px] font-semibold '>
-                Password
-              </label>
-              <input
-                type='password'
-                id='password'
+              <TextField
                 value={values.password}
                 onChange={(e) => handleOnChange(e, "password")}
-                placeholder='Enter password'
-                className='border px-3 rounded-md outline-none py-2'
+                type='password'
+                label='Password'
                 autoComplete='current-password'
               />
             </div>
@@ -115,10 +132,10 @@ const Login = () => {
             <button
               type='button'
               onClick={handleLogin}
-              className=' w-[100%] bg-[#7b68ee] hover:bg-[#5f48ea] font-bold text-white rounded-md py-3 px-5'>
+              className=' w-[100%] bg-[#7b68ee] hover:bg-[#5f48ea] mt-1 font-bold text-white rounded-md py-3 px-5'>
               Log In
             </button>
-          </form>
+          </Box>
         </div>
       </div>
       <p className='flex sm:hidden justify-center mt-10 '>

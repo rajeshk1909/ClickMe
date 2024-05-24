@@ -4,10 +4,10 @@ import {
   setIsUserLogIn,
   setExpanded,
   setToggleSwitchData,
-  setNavbar,
   setCurrentUserData,
 } from "../redux/features/userData"
 import { setInBoxNav } from "../redux/features/InboxData"
+import { setNavbar } from "../redux/features/navbarData"
 
 const useHandleLogOut = () => {
   const dispatch = useDispatch()

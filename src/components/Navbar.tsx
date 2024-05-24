@@ -5,12 +5,13 @@ import { useSelector } from "react-redux"
 import { RootState } from "../redux/store/store"
 import HomeNavbar from "../app/Home/components/HomeNavbar"
 import InboxNavbar from "../app/Inbox/components/InboxNavbar"
+import DocsNavbar from "../app/Documents/components/DocsNavbar"
 
 const Navbar = () => {
   const dispatch = useDispatch()
 
   const expanded = useSelector((state: RootState) => state.userData.expanded)
-  const navbar = useSelector((state: RootState) => state.userData.navbar)
+  const navbar = useSelector((state: RootState) => state.navbarData.navbar)
 
   const handleCollapseSlidebar = () => {
     dispatch(setExpanded(!expanded))
@@ -39,6 +40,8 @@ const Navbar = () => {
         <HomeNavbar />
       ) : navbar.navbarLabel === "Inbox" ? (
         <InboxNavbar />
+      ) : navbar.navbarLabel === "Docs" ? (
+        <DocsNavbar />
       ) : (
         ""
       )}
