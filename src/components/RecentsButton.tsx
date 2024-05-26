@@ -13,9 +13,9 @@ const RecentsButton = ({ icon, label, sublabel }: buttonPropsType) => {
     <div className='w-[98%] hover:cursor-pointer group justify-between px-2 flex items-center hover:bg-gray-100 py-1 rounded-md'>
       <div className='flex items-center'>
         {icon}
-        <p className='ml-3 mr-1'>{label}</p>
+        <p className='ml-3 capitalize mr-1'>{label}</p>
         {sublabel && (
-          <p className='text-gray-400 text-sm flex items-center'>
+          <p className='text-gray-400 capitalize text-sm flex items-center'>
             <LuDot /> {sublabel}
           </p>
         )}

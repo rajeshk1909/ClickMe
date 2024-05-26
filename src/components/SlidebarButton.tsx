@@ -46,7 +46,7 @@ const SlidebarButton = ({
             : "hover:bg-gray-200 bg-gray-100"
         } rounded-md my-1`}>
         {button.icon}
-        <p className={`${expanded ? "font-semibold text-[12px]" : ""}`}>
+        <p className={` capitalize ${expanded ? "font-semibold text-[14px]" : ""}`}>
           {expanded ? button.buttonLabel : ""}
         </p>
       </button>

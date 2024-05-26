@@ -21,7 +21,7 @@ const UnderlineButton = ({
       }`}>
       <button
         onClick={() => handleButtonClick(index , label)}
-        className='my-2 px-3 py-1 hover:bg-gray-200 hover:text-black rounded-md'>
+        className='my-2 capitalize px-3 py-1 hover:bg-gray-200 hover:text-black rounded-md'>
         {label}
       </button>
     </div>

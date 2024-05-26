@@ -12,7 +12,7 @@ const hoverButton = ({ label, icon, iconStyle }: buttonProps) => {
       }`}>
       <div className='mx-2 my-1 flex items-center'>
         {icon}
-        <div className='text-[14px] mx-2 mr-1 font-semibold'> {label} </div>
+        <div className='text-[14px] capitalize mx-2 mr-1 font-semibold'> {label} </div>
       </div>
     </button>
   )
