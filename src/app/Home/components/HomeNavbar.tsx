@@ -1,5 +1,6 @@
 import { GoHome } from "react-icons/go"
 import SettingOpen from "./SettingOpen"
+import Button from "../../../components/Button"
 
 const HomeNavbar = () => {
   return (
@@ -10,9 +11,7 @@ const HomeNavbar = () => {
 
       <div className='flex items-center'>
         <div className='border-r hidden sm:flex pr-3'>
-          <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] font-bold text-white rounded-md py-1 px-5'>
-            Manage Cards
-          </button>
+          <Button name="Manage card" size='16' />
         </div>
         <SettingOpen />
       </div>

@@ -1,6 +1,7 @@
 import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import tickIcon from "../../../assets/tickIcon.svg"
+import Button from "../../../components/Button"
 
 const LineUp = () => {
   return (
@@ -25,10 +26,7 @@ const LineUp = () => {
               </button>
             </p>
             <div className='mt-5'>
-              <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] text-xs font-semibold text-white rounded-md py-1 px-5'>
-                {" "}
-                + Add Task
-              </button>
+              <Button name='+ Add Task' size="12" />
             </div>
           </div>
         </div>

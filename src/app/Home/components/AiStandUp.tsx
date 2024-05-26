@@ -1,6 +1,7 @@
 import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import { PiStarFourFill } from "react-icons/pi"
+import Button from "../../../components/Button"
 
 const AiStandUp = () => {
   return (
@@ -22,9 +23,7 @@ const AiStandUp = () => {
             Use ClickUp AI to create a recurring summary of recent activity.
           </p>
           <div className='mt-5'>
-            <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] text-xs font-semibold text-white rounded-md py-1 px-5'>
-              Write StandUp
-            </button>
+            <Button name='Write StandUp' size='12' />
           </div>
         </div>
       </div>

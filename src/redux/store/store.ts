@@ -4,19 +4,21 @@ import storage from 'redux-persist/lib/storage';
 import userDataReducer from "../features/userData";
 import inboxDataReducers from "../features/InboxData"
 import navbarDataReducers from "../features/navbarData"
+import docsDataReducers from '../features/docsData';
 
 
 
 const rootReducer = combineReducers({
   userData: userDataReducer ,
   inboxData: inboxDataReducers,
-  navbarData:navbarDataReducers
+  navbarData: navbarDataReducers,
+  docsData:docsDataReducers
 });
 
 const persistConfig = {
   key: 'clickMe',
   storage,
-  whitelist: ["userData" , "inboxData","navbarData"]
+  whitelist: [ "userData" , "inboxData", "navbarData" , "docsData" ]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

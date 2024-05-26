@@ -3,6 +3,7 @@ import { MdOutlineMoreHoriz } from "react-icons/md"
 import { PiGreaterThanLight, PiLessThanLight } from "react-icons/pi"
 import calendarIcon from "../../../assets/calendarIcon.svg"
 import { CiCalendar } from "react-icons/ci"
+import Button from "../../../components/Button"
 
 const Agenda = () => {
   const currentDate = new Date()
@@ -65,10 +66,7 @@ const Agenda = () => {
               </button>
             </p>
             <div className='mt-5'>
-              <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] text-xs font-semibold text-white rounded-md py-1 px-5'>
-                {" "}
-                + Add calandar integrations
-              </button>
+              <Button name='+ Add calandar integrations' size='12' />
             </div>
           </div>
         </div>

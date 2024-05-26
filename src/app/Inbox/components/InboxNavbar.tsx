@@ -1,10 +1,24 @@
 import { useState } from "react"
 import { FiInbox } from "react-icons/fi"
-import InboxNavbarButton from "./InboxNavbarButton"
 import { IoFilterSharp, IoSettingsOutline } from "react-icons/io5"
 import { MdOutlineDoneAll } from "react-icons/md"
 import { useDispatch } from "react-redux"
 import { setInBoxNav } from "../../../redux/features/InboxData"
+import UnderlineButton from "../../../components/UnderlineButton"
+import HoverButton from "../../../components/HoverButton"
+
+const items = [
+  {
+    icon: <IoFilterSharp />,
+    label: "Filter",
+    style: false,
+  },
+  {
+    icon: <MdOutlineDoneAll />,
+    label: "Clear all",
+    style: true,
+  },
+]
 
 const InboxNavbar = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0)
@@ -32,7 +46,7 @@ const InboxNavbar = () => {
         </p>
         <div className='flex items-center h-5 px-3 border-l'>
           {buttons?.map((label, index) => (
-            <InboxNavbarButton
+            <UnderlineButton
               label={label}
               activeIndex={activeIndex}
               key={index}
@@ -43,18 +57,15 @@ const InboxNavbar = () => {
         </div>
       </div>
       <div className='flex items-center'>
-        <button className='flex hover:bg-gray-100 rounded-md items-center'>
-          <p className='mx-2 my-1 flex items-center'>
-            <IoFilterSharp className='text-gray-500' />
-            <p className='text-[14px] mx-2 mr-1 font-semibold'> Filter </p>
-          </p>
-        </button>
-        <button className='flex text-gray-400 hover:cursor-not-allowed rounded-md items-center'>
-          <p className='mx-2 my-1 flex items-center'>
-            <MdOutlineDoneAll className='' />
-            <p className='text-[14px] mx-2 mr-1 font-semibold'> Clear all </p>
-          </p>
-        </button>
+        {items.map((item, index) => (
+          <HoverButton
+            key={index}
+            iconStyle={item.style}
+            label={item.label}
+            icon={item.icon}
+          />
+        ))}
+
         <div className='border-l h-4 flex items-center pl-2'>
           <button className='hover:bg-gray-200 flex items-center justify-center rounded-md '>
             <IoSettingsOutline className=' my-2 mx-2 cursor-pointer text-base' />

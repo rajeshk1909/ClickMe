@@ -4,7 +4,7 @@ import { IoReorderFour } from "react-icons/io5"
 import { CiFolderOn } from "react-icons/ci"
 import { BiTask } from "react-icons/bi"
 import { FaUserGroup } from "react-icons/fa6"
-import RecentsButton from "./RecentsButton"
+import RecentsButton from "../../../components/RecentsButton"
 
 const items = [
   {

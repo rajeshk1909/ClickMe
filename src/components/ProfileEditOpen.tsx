@@ -125,7 +125,7 @@ const ProfileEditOpen = () => {
                 </p>
               </button>
               <div className=' ml-3 '>
-                <p className='font-semibold text-[14px]'>
+                <p className='font-semibold capitalize text-[14px]'>
                   {curruntUserData.name}
                 </p>
                 <p className='text-[12px]'>Online</p>

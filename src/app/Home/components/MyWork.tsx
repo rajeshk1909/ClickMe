@@ -2,6 +2,7 @@ import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import { IoSettingsOutline } from "react-icons/io5"
 import whiteLogo from "../../../assets/clickup_up_white_logo.svg"
+import Button from "../../../components/Button"
 
 const MyWork = () => {
   return (
@@ -32,10 +33,7 @@ const MyWork = () => {
               </button>
             </p>
             <div className='mt-5'>
-              <button className=' bg-[#7b68ee]  hover:bg-[#5f48ea] text-xs font-semibold text-white rounded-md py-1 px-5'>
-                {" "}
-                + Add calandar integrations
-              </button>
+              <Button name='+ Add calandar integrations' size='12' />
             </div>
           </div>
         </div>

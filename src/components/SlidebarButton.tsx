@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux"
-import { setDocsModel } from "../redux/features/navbarData"
+// import { useDispatch } from "react-redux"
+// import { setDocsModel } from "../redux/features/navbarData"
 import ButtonTooltip from "./ButtonTooltip"
 // import { useEffect } from "react"
 
@@ -22,25 +22,23 @@ const SlidebarButton = ({
   activeIndex,
   handleNavbar,
 }: SlidebarButtonTypes) => {
-  const dispatch = useDispatch()
-  const handleOpen = () => dispatch(setDocsModel(true))
-  const handleClose = () => dispatch(setDocsModel(false))
-
-  // useEffect(() => {
-  //   dispatch(setDocsModel(false))
-  // },[])
+  // const dispatch = useDispatch()
+  // const handleOpen = () => dispatch(setDocsModel(true))
+  // const handleClose = () => dispatch(setDocsModel(false))
 
   return (
     <ButtonTooltip title={id < 3 || id > 7 ? button.buttonLabel : ""}>
       <button
-        onMouseEnter={() => {
-          if (id === 3) {
-            handleOpen()
-          }
-        }}
-        onMouseLeave={() => {
-          handleClose()
-        }}
+        // onMouseEnter={() => {
+        //   if (id === 3) {
+        //     handleOpen()
+        //   }
+        // }}
+        // onMouseOut={() => {
+        //   if (id === 3) {
+        //     handleClose()
+        //   }
+        // }}
         onClick={() => handleNavbar(button.buttonLabel, id)}
         className={`flex items-center ${expanded ? "w-[200px]" : "w-[40px]"} ${
           activeIndex === id

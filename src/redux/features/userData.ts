@@ -1,13 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 export interface UserDataTypes {
-    id?: number | string
-    name?: string 
-    email?: string
-    password?: string
-    expanded?: boolean
-    toggleSwitch?: boolean
-    isUserLogIn?: boolean
+    id: number | string
+    name: string 
+    email: string
+    password: string
 }
+
 export interface UserDataState {
     userData: UserDataTypes[];
     currentUserData: UserDataTypes;
@@ -37,9 +35,9 @@ const newLogIn :boolean = logIn !== null ? JSON.parse(logIn) : false
 const initialState: UserDataState = {
     userData: newUserData,
     currentUserData: newCurrentUserData,
-    expanded: false,
     toggleSwitch: newSwitchData,
-    isUserLogIn : newLogIn,
+    isUserLogIn: newLogIn,
+    expanded: false,
 };
 
 const userDataSlice = createSlice({
