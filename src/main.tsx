@@ -9,6 +9,7 @@ import { Provider } from "react-redux"
 import store from "./redux/store/store.ts"
 import Inbox from "./app/Inbox/page/Inbox.tsx"
 import Documents from "./app/Documents/page/Documents.tsx"
+import Dashboard from "./app/Dashboard/page/Dashboard.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -21,6 +22,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path='/' element={<App />} />
           <Route path='/Inbox' element={<Inbox />} />
           <Route path='/docs' element={<Documents />} />
+          <Route path='/dashboard' element={<Dashboard /> } />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -124,18 +124,23 @@ const Slidebar = () => {
 
   const handleNavbar = (label: string, index: number) => {
     setActiveIndex(index)
-    dispatch(
-      setNavbar({
-        navbarLabel: label,
-        navbarId: index,
-      })
-    )
+    if (index <= 4) {
+      dispatch(
+        setNavbar({
+          navbarLabel: label,
+          navbarId: index,
+        })
+      )
+    }
+
     label === "Home"
       ? navigate("/")
       : label === "Inbox"
       ? navigate("/inbox")
       : label === "Docs"
       ? navigate("/docs")
+      : label === "Dashboards"
+      ? navigate("/dashboard")
       : ""
   }
 

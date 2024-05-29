@@ -6,6 +6,7 @@ import { RootState } from "../redux/store/store"
 import HomeNavbar from "../app/Home/components/HomeNavbar"
 import InboxNavbar from "../app/Inbox/components/InboxNavbar"
 import DocsNavbar from "../app/Documents/components/DocsNavbar"
+import DashboardNavbar from "../app/Dashboard/components/DashboardNavbar"
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -42,6 +43,8 @@ const Navbar = () => {
         <InboxNavbar />
       ) : navbar.navbarLabel === "Docs" ? (
         <DocsNavbar />
+      ) : navbar.navbarLabel === "Dashboards" ? (
+        <DashboardNavbar />
       ) : (
         ""
       )}
