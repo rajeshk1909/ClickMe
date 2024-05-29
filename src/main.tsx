@@ -10,6 +10,7 @@ import store from "./redux/store/store.ts"
 import Inbox from "./app/Inbox/page/Inbox.tsx"
 import Documents from "./app/Documents/page/Documents.tsx"
 import Dashboard from "./app/Dashboard/page/Dashboard.tsx"
+import Clips from "./app/Clips/page/Clips.tsx"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -22,7 +23,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path='/' element={<App />} />
           <Route path='/Inbox' element={<Inbox />} />
           <Route path='/docs' element={<Documents />} />
-          <Route path='/dashboard' element={<Dashboard /> } />
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path="/clips" element={<Clips /> } />
         </Routes>
       </BrowserRouter>
     </Provider>

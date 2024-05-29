@@ -124,7 +124,7 @@ const Slidebar = () => {
 
   const handleNavbar = (label: string, index: number) => {
     setActiveIndex(index)
-    if (index <= 4) {
+    if (index <= 5) {
       dispatch(
         setNavbar({
           navbarLabel: label,
@@ -141,6 +141,8 @@ const Slidebar = () => {
       ? navigate("/docs")
       : label === "Dashboards"
       ? navigate("/dashboard")
+      : label === "Clips"
+      ? navigate("/clips")
       : ""
   }
 

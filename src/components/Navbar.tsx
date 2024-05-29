@@ -7,6 +7,7 @@ import HomeNavbar from "../app/Home/components/HomeNavbar"
 import InboxNavbar from "../app/Inbox/components/InboxNavbar"
 import DocsNavbar from "../app/Documents/components/DocsNavbar"
 import DashboardNavbar from "../app/Dashboard/components/DashboardNavbar"
+import ClipsNavbar from "../app/Clips/components/ClipsNavbar"
 
 const Navbar = () => {
   const dispatch = useDispatch()
@@ -45,6 +46,8 @@ const Navbar = () => {
         <DocsNavbar />
       ) : navbar.navbarLabel === "Dashboards" ? (
         <DashboardNavbar />
+      ) : navbar.navbarLabel === "Clips" ? (
+        <ClipsNavbar />
       ) : (
         ""
       )}

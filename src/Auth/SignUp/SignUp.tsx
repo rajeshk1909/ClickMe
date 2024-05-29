@@ -101,9 +101,11 @@ const SignUp = () => {
         )
         return
       } else {
-        const idNumber = userData.length ? userData[userData.length - 1].id : 1
+        let idNumber: any = userData.length
+          ? userData[userData.length - 1].id
+          : 1
         const val: UserDataTypes = {
-          id: idNumber,
+          id: idNumber++,
           name: values.name,
           email: values.email,
           password: values.password,
