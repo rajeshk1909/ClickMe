@@ -13,23 +13,23 @@ const cardsData = [
   },
   {
     src: "	https://app-cdn.clickup.com/team-reporting.e35ef8ef9597622cabcee0bb9edcb48c.svg",
-    title: "Simple Dashboard",
-    text: "Easily manage and prioritize daily tasks.",
+    title: "Team Reporting",
+    text: "Encourage collaboration by viewing progress across team.",
   },
   {
     src: "	https://app-cdn.clickup.com/time-tracking.461edd9f61ee3b6f7b502b5f4b7e79f9.svg",
-    title: "Simple Dashboard",
-    text: "Easily manage and prioritize daily tasks.",
+    title: "Time Tracking",
+    text: "View and report on time tracking metrics.",
   },
   {
     src: "https://app-cdn.clickup.com/project-management.117e87b276b30f48f90e4e8c4b965332.svg",
-    title: "Simple Dashboard",
-    text: "Easily manage and prioritize daily tasks.",
+    title: "Project Management",
+    text: "Deep-dive on detailed projects from a central place.",
   },
   {
     src: "	https://app-cdn.clickup.com/client-portal.91921b5acc8c3e308f0b51fa7dc60364.svg",
-    title: "Simple Dashboard",
-    text: "Easily manage and prioritize daily tasks.",
+    title: "Client Portal",
+    text: "Chat and collaborate with clients on tasks and projects.",
   },
   {
     src: "",
