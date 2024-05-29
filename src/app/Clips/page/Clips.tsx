@@ -5,6 +5,7 @@ import TopNavbar from "../../../components/TopNavbar"
 import { RootState } from "../../../redux/store/store"
 import ClipsCard from "../components/ClipsCard"
 import Button from "../../../components/Button"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const clipsData = [
   {
@@ -44,13 +45,12 @@ const Clips = () => {
         </div>
         <div className='flex items-center mt-10 flex-col'>
           <h1 className='font-semibold text-[18px]'>Create your first Clip!</h1>
-          <div className='w-[500px] mt-4 mb-6 text-[12px] text-center '>
-            Create and share screen recordings to give your teammates context.
-            Save your recordings, attach them to tasks, or share them anywhere.
-            <span className='text-blue-500 hover:border-b border-blue-500'>
-              Learn more
-            </span>
-          </div>
+          <LearnMoreButton
+            btn={true}
+            width='500'
+            text='Create and share screen recordings to give your teammates context.
+            Save your recordings, attach them to tasks, or share them anywhere.'
+          />
           <Button name='Create clip' size='14' />
         </div>
       </div>

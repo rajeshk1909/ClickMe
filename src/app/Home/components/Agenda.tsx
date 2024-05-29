@@ -4,6 +4,7 @@ import { PiGreaterThanLight, PiLessThanLight } from "react-icons/pi"
 import calendarIcon from "../../../assets/calendarIcon.svg"
 import { CiCalendar } from "react-icons/ci"
 import Button from "../../../components/Button"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const Agenda = () => {
   const currentDate = new Date()
@@ -59,12 +60,11 @@ const Agenda = () => {
               width={80}
               alt='Calendar Icon'
             />
-            <p className='text-xs w-[200px] text-center mt-5'>
-              Agenda items from your calendars will show here.
-              <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
-                Learn more
-              </button>
-            </p>
+            <LearnMoreButton
+              text='Agenda items from your calendars will show here.'
+              width='200'
+              btn={true}
+            />
             <div className='mt-5'>
               <Button name='+ Add calandar integrations' size='12' />
             </div>

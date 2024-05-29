@@ -2,6 +2,7 @@ import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import { PiStarFourFill } from "react-icons/pi"
 import Button from "../../../components/Button"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const AiStandUp = () => {
   return (
@@ -19,9 +20,11 @@ const AiStandUp = () => {
       <div className='flex items-center h-[100%] justify-center'>
         <div className='flex items-center flex-col'>
           <PiStarFourFill className='text-[30px] text-[#ff37af]' />
-          <p className='text-xs w-[200px] text-center mt-5'>
-            Use ClickUp AI to create a recurring summary of recent activity.
-          </p>
+          <LearnMoreButton
+            btn={false}
+            width='200'
+            text='Use ClickUp AI to create a recurring summary of recent activity.'
+          />
           <div className='mt-5'>
             <Button name='Write StandUp' size='12' />
           </div>

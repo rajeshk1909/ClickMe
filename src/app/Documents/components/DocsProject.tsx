@@ -2,6 +2,7 @@ import { FiPlusCircle } from "react-icons/fi"
 import DocsNav from "./DocsNav"
 import Button from "../../../components/Button"
 import DocsNavButton from "./DocsNavButton"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const buttons = [
   {
@@ -52,10 +53,12 @@ const DocsProject = () => {
         <div className='font-semibold text-[18px]'>
           Let's create your first ClickUp Doc!
         </div>
-        <div className='w-[500px] text-center my-5 text-[12px]'>
-          Create anything from project plans to knowledge bases with Docs. Embed
-          tasks and dashboards, assign comments, and more. Learn more
-        </div>
+        <LearnMoreButton
+          btn={true}
+          text='Create anything from project plans to knowledge bases with Docs. Embed
+          tasks and dashboards, assign comments, and more. '
+          width='500'
+        />
         <Button name='Create Docs' size='14' />
       </div>
     </div>

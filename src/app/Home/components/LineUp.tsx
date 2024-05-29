@@ -2,6 +2,7 @@ import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import tickIcon from "../../../assets/tickIcon.svg"
 import Button from "../../../components/Button"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const LineUp = () => {
   return (
@@ -18,15 +19,15 @@ const LineUp = () => {
         <div className='flex items-center h-[100%] justify-center'>
           <div className='flex items-center flex-col'>
             <img src={tickIcon} alt='Click Up Logo' height={80} width={80} />
-            <p className='text-xs w-[200px] text-center mt-5'>
-              LineUp keeps your most important tasks in one list. Add your most
-              important task to get started.
-              <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
-                Learn more
-              </button>
-            </p>
+            <LearnMoreButton
+              btn={true}
+              width='200'
+              text=' LineUp keeps your most important tasks in one list. Add your most
+              important task to get started.'
+            />
+
             <div className='mt-5'>
-              <Button name='+ Add Task' size="12" />
+              <Button name='+ Add Task' size='12' />
             </div>
           </div>
         </div>

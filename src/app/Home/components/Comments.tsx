@@ -1,6 +1,7 @@
 import { AiOutlineFullscreen } from "react-icons/ai"
 import { MdOutlineMoreHoriz } from "react-icons/md"
 import commentIcon from "../../../assets/commentIcon.svg"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const Comments = () => {
   return (
@@ -22,12 +23,11 @@ const Comments = () => {
           <div className='flex items-center flex-col '>
             <img src={commentIcon} alt='Comment Icon' height={80} width={80} />
             <h1 className='font-bold'>No Comments</h1>
-            <p className='text-xs w-[200px] text-center mt-5'>
-              You don't have any assigned comments.
-              <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
-                Learn more
-              </button>
-            </p>
+            <LearnMoreButton
+              btn={true}
+              width='200'
+              text=" You don't have any assigned comments."
+            />
           </div>
         </div>
       </div>

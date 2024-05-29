@@ -3,6 +3,7 @@ import { MdOutlineMoreHoriz } from "react-icons/md"
 import { IoSettingsOutline } from "react-icons/io5"
 import whiteLogo from "../../../assets/clickup_up_white_logo.svg"
 import Button from "../../../components/Button"
+import LearnMoreButton from "../../../components/LearnMoreButton"
 
 const MyWork = () => {
   return (
@@ -26,12 +27,11 @@ const MyWork = () => {
         <div className='flex items-center h-[100%] justify-center'>
           <div className='flex items-center flex-col'>
             <img src={whiteLogo} alt='Click Up Logo' height={80} width={80} />
-            <p className='text-xs w-[200px] text-center mt-5'>
-              Tasks and Reminders assigned to you will show here.
-              <button className='border-b border-white ml-1 hover:border-[#7670d5] text-[#7670d5]'>
-                Learn more
-              </button>
-            </p>
+            <LearnMoreButton
+              btn={true}
+              text=' Tasks and Reminders assigned to you will show here.'
+              width='200'
+            />
             <div className='mt-5'>
               <Button name='+ Add calandar integrations' size='12' />
             </div>
