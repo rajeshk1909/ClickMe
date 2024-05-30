@@ -81,12 +81,13 @@ const SignUp = () => {
   }
 
   const handleSignUp = () => {
+    const id = userData.length ? userData.length + 1 : 1
     const checkEmail = userData.find(
       (data: UserDataTypes) => data.email === values.email
     )
 
     if (checkEmail?.email) {
-      alert("Enter a different user ID; the email is already used.")
+      alert("Enter a different user ID. the email is already used.")
       return
     } else {
       if (!userValError.name) {
@@ -101,11 +102,8 @@ const SignUp = () => {
         )
         return
       } else {
-        let idNumber: any = userData.length
-          ? userData[userData.length - 1].id
-          : 1
         const val: UserDataTypes = {
-          id: idNumber++,
+          id,
           name: values.name,
           email: values.email,
           password: values.password,

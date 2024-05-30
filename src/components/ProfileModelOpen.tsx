@@ -6,19 +6,30 @@ import { FaPlus } from "react-icons/fa6"
 import ChildProfileModel from "./ChildProfileModel"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store/store"
+import ProfileOpenButton from "./ProfileOpenButton"
 
 type ProfileModelOpenPros = {
   handleClose: () => void
-  open: boolean,
+  open: boolean
   expanded: boolean
 }
+
+const buttons = [
+  [
+    { id: 1, label: "Settings", icon: <IoSettingsOutline /> },
+    { id: 2, label: "Upgrade", icon: <GiUpgrade /> },
+  ],
+  [
+    { id: 4, label: "Manage users", icon: <FaUserGroup /> },
+    { id: 5, label: "New Workspace", icon: <FaPlus /> },
+  ],
+]
 
 const ProfileModelOpen = ({
   expanded,
   handleClose,
   open,
 }: ProfileModelOpenPros) => {
-
   const currentUserData = useSelector(
     (state: RootState) => state.userData.currentUserData
   )
@@ -46,24 +57,13 @@ const ProfileModelOpen = ({
               <p className='text-sm'>Free Forever 1 members</p>
             </div>
           </div>
-          <button className='w-[100%] py-[6px] rounded flex items-center text-sm hover:bg-gray-200'>
-            <IoSettingsOutline className='mx-3' />
-            <p>Settings</p>
-          </button>
-          <button className='w-[100%] py-[6px] rounded flex items-center text-sm hover:bg-gray-200'>
-            <GiUpgrade className='mx-3' />
-            <p>Upgrade</p>
-          </button>
-
+          {buttons[0].map((btn) => (
+            <ProfileOpenButton icon={btn.icon} label={btn.label} key={btn.id} />
+          ))}
           <ChildProfileModel expanded={expanded} />
-          <button className='w-[100%] py-[6px] rounded flex items-center text-sm hover:bg-gray-200'>
-            <FaUserGroup className='mx-3' />
-            <p>Manage users</p>
-          </button>
-          <button className='w-[100%] py-[6px] rounded flex items-center text-sm hover:bg-gray-200'>
-            <FaPlus className='mx-3' />
-            <p>New Workspace</p>
-          </button>
+          {buttons[1].map((btn) => (
+            <ProfileOpenButton icon={btn.icon} label={btn.label} key={btn.id} />
+          ))}
         </div>
       </Modal>
     </div>
