@@ -1,4 +1,4 @@
-import { MdOutlinePushPin } from "react-icons/md"
+import { MdPushPin } from "react-icons/md"
 import GetIconComponent from "../../components/GetIconComponent"
 import ButtonTooltip from "../../components/ButtonTooltip"
 
@@ -27,7 +27,7 @@ const MoreModelOpenButton = ({ handleUpdateNavbar, button }: buttonType) => {
           className={` rounded-md hover:bg-gray-300 ${
             button.btn ? "text-blue-500" : ""
           } `}>
-          <MdOutlinePushPin className='m-1' />
+          <MdPushPin className='m-1' />
         </button>
       </ButtonTooltip>
     </button>
