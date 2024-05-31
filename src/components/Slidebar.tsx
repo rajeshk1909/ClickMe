@@ -1,93 +1,17 @@
 import * as React from "react"
-import { GoHome, GoVideo } from "react-icons/go"
 import { PiBookOpenTextLight } from "react-icons/pi"
-import { FiInbox } from "react-icons/fi"
-import { IoDocumentTextOutline, IoHelpCircleOutline } from "react-icons/io5"
-import { MdDashboard } from "react-icons/md"
-import { RxLapTimer, RxDashboard } from "react-icons/rx"
-import { CgMoreO } from "react-icons/cg"
-import { FaRegStar, FaChevronDown } from "react-icons/fa"
-import { BsPersonFillAdd } from "react-icons/bs"
+import { FaChevronDown } from "react-icons/fa"
 import { useSelector } from "react-redux"
 import { setExpanded } from "../redux/features/userData"
 import { useDispatch } from "react-redux"
 import ProfileModelOpen from "../components/ProfileModelOpen"
 import { RootState } from "../redux/store/store"
-import SlidebarButton from "./SlidebarButton"
 import { useNavigate } from "react-router-dom"
 import useHandleLogOut from "../lib/useHandleLogOut"
 import { setNavbar } from "../redux/features/navbarData"
 import DocsModelOpen from "./DocsModelOpen"
-
-const buttons = [
-  [
-    {
-      id: 1,
-      icon: <GoHome className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Home",
-    },
-    {
-      id: 2,
-      icon: <FiInbox className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Inbox",
-    },
-    {
-      id: 3,
-      icon: (
-        <IoDocumentTextOutline className='my-[6px] mx-2 cursor-pointer text-xl' />
-      ),
-      buttonLabel: "Docs",
-    },
-    {
-      id: 4,
-      icon: <MdDashboard className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Dashboards",
-    },
-    {
-      id: 5,
-      icon: <GoVideo className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Clips",
-    },
-    {
-      id: 6,
-      icon: <RxLapTimer className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Timesheets",
-    },
-    {
-      id: 7,
-      icon: <CgMoreO className='my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "More",
-    },
-  ],
-  [
-    {
-      id: 8,
-      icon: <FaRegStar className=' my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Favorites",
-    },
-    {
-      id: 9,
-      icon: <RxDashboard className=' my-[6px] mx-2 cursor-pointer text-xl' />,
-      buttonLabel: "Spaces",
-    },
-  ],
-  [
-    {
-      id: 10,
-      icon: (
-        <BsPersonFillAdd className=' my-[6px] mx-2 cursor-pointer text-xl' />
-      ),
-      buttonLabel: "Invite",
-    },
-    {
-      id: 11,
-      icon: (
-        <IoHelpCircleOutline className=' my-[6px] mx-2 cursor-pointer text-xl' />
-      ),
-      buttonLabel: "Resource center",
-    },
-  ],
-]
+import MoreModelOpen from "../app/More/MoreModelOpen"
+import SlidebarButton from "./SlidebarButton"
 
 const Slidebar = () => {
   const dispatch = useDispatch()
@@ -101,6 +25,14 @@ const Slidebar = () => {
     (state: RootState) => state.userData.isUserLogIn
   )
 
+  const slidebarButtons = useSelector(
+    (state: RootState) => state.navbarData.slidebarButtons
+  )
+  // slidebar frist array fliter for initial button
+  const topSlidebar = slidebarButtons[0].filter((button) => button.btn === true)
+
+  const slidebarButtonStyle = "my-[6px] mx-2 cursor-pointer text-xl"
+
   React.useEffect(() => {
     dispatch(setExpanded(false))
     if (!isUserLogIn || currentUserData.email === "") {
@@ -111,6 +43,7 @@ const Slidebar = () => {
   const expanded: boolean = useSelector(
     (state: RootState) => state.userData.expanded
   )
+
 
   const [open, setOpen] = React.useState<boolean>(false)
   const navbar = useSelector((state: RootState) => state.navbarData.navbar)
@@ -197,7 +130,7 @@ const Slidebar = () => {
           </div>
 
           <div className='flex flex-col pt-1 items-center'>
-            {buttons[0].map((button) => (
+            {topSlidebar.map((button) => (
               <SlidebarButton
                 key={button.id}
                 id={button.id}
@@ -205,13 +138,15 @@ const Slidebar = () => {
                 expanded={expanded}
                 activeIndex={activeIndex}
                 handleNavbar={handleNavbar}
+                style={slidebarButtonStyle}
               />
             ))}
+            <MoreModelOpen expanded={expanded} />
             <div
               className={` ${
                 expanded ? "w-[220px]" : "w-[60px]"
               } flex flex-col items-center mt-1 pt-3 border-t`}>
-              {buttons[1].map((button) => (
+              {slidebarButtons[1].map((button) => (
                 <SlidebarButton
                   key={button.id}
                   id={button.id}
@@ -219,6 +154,7 @@ const Slidebar = () => {
                   expanded={expanded}
                   activeIndex={activeIndex}
                   handleNavbar={handleNavbar}
+                  style={slidebarButtonStyle}
                 />
               ))}
             </div>
@@ -228,7 +164,7 @@ const Slidebar = () => {
           className={`${
             expanded ? "w-[220px]" : "w-[60px]"
           }flex flex-col items-center `}>
-          {buttons[2].map((button) => (
+          {slidebarButtons[2].map((button) => (
             <SlidebarButton
               key={button.id}
               id={button.id}
@@ -236,6 +172,7 @@ const Slidebar = () => {
               expanded={expanded}
               activeIndex={activeIndex}
               handleNavbar={handleNavbar}
+              style={slidebarButtonStyle}
             />
           ))}
         </div>

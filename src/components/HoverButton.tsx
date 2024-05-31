@@ -7,16 +7,15 @@ type buttonProps = {
 const HoverButton = ({ label, icon, iconStyle }: buttonProps) => {
   return (
     <button
-      className={`flex border rounded-md items-center ${
+      className={`flex mr-3 border rounded-md items-center ${
         iconStyle
-          ? "cursor-not-allowed text-gray-400 "
-          : "cursor-pointer hover:bg-gray-100"
+          ? "cursor-pointer hover:bg-gray-100"
+          : "cursor-not-allowed text-gray-400 "
       }`}>
       <div className='mx-2 my-1 flex items-center'>
         {icon}
         <div className='text-[14px] capitalize mx-2 mr-1 font-semibold'>
-          {" "}
-          {label}{" "}
+          {label}
         </div>
       </div>
     </button>

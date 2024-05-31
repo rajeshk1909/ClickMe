@@ -1,18 +1,19 @@
-// import { useDispatch } from "react-redux"
-// import { setDocsModel } from "../redux/features/navbarData"
 import ButtonTooltip from "./ButtonTooltip"
-// import { useEffect } from "react"
+import GetIconComponent from "./GetIconComponent"
+
+type buttonType = {
+    id: number
+    icon: string
+    buttonLabel: string
+  }
 
 type SlidebarButtonTypes = {
   id: number
-  button: {
-    id: number
-    icon: JSX.Element
-    buttonLabel: string
-  }
+  button: buttonType
   expanded: boolean
   activeIndex: number | undefined
   handleNavbar: (label: string, id: number) => void
+  style: string
 }
 
 const SlidebarButton = ({
@@ -21,32 +22,23 @@ const SlidebarButton = ({
   expanded,
   activeIndex,
   handleNavbar,
+  style,
 }: SlidebarButtonTypes) => {
-  // const dispatch = useDispatch()
-  // const handleOpen = () => dispatch(setDocsModel(true))
-  // const handleClose = () => dispatch(setDocsModel(false))
 
   return (
-    <ButtonTooltip title={id < 3 || id > 7 ? button.buttonLabel : ""}>
+    <ButtonTooltip title={ button.buttonLabel}>
       <button
-        // onMouseEnter={() => {
-        //   if (id === 3) {
-        //     handleOpen()
-        //   }
-        // }}
-        // onMouseOut={() => {
-        //   if (id === 3) {
-        //     handleClose()
-        //   }
-        // }}
         onClick={() => handleNavbar(button.buttonLabel, id)}
         className={`flex items-center ${expanded ? "w-[200px]" : "w-[40px]"} ${
           activeIndex === id
             ? "bg-[#e5e4fc] hover:bg-[#e5e4fc] text-[#7670d5]"
             : "hover:bg-gray-200 bg-gray-100"
         } rounded-md my-1`}>
-        {button.icon}
-        <p className={` capitalize ${expanded ? "font-semibold text-[14px]" : ""}`}>
+        <GetIconComponent iconName={button.icon} style={style} />
+        <p
+          className={` capitalize ${
+            expanded ? "font-semibold text-[14px]" : ""
+          }`}>
           {expanded ? button.buttonLabel : ""}
         </p>
       </button>

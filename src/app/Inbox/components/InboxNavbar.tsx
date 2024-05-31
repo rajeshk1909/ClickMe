@@ -11,12 +11,12 @@ const items = [
   {
     icon: <IoFilterSharp />,
     label: "Filter",
-    style: false,
+    style: true,
   },
   {
     icon: <MdOutlineDoneAll />,
     label: "Clear all",
-    style: true,
+    style: false,
   },
 ]
 
