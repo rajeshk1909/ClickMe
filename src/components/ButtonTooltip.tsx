@@ -6,7 +6,7 @@ const ButtonTooltip = styled(({ className, ...props }: TooltipProps) => (
     {...props}
     arrow
     classes={{ popper: className }}
-    enterDelay={1000}
+    enterDelay={0}
     leaveDelay={0}
     placement='right'
   />
